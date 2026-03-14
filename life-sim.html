@@ -28,7 +28,7 @@
     }
     #top-bar .tb-label { color: #a8dadc; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
     #top-bar .tb-value { font-size: 1.1rem; font-weight: bold; color: #eee; }
-    #top-bar .tb-item { display: flex; flex-direction: column; }
+    #top-bar .tb-item  { display: flex; flex-direction: column; }
 
     /* ── MAIN GRID ── */
     #main-grid {
@@ -48,7 +48,6 @@
       overflow-y: auto;
       flex-shrink: 0;
     }
-
     #stat-panel h3 {
       font-size: 0.75rem;
       text-transform: uppercase;
@@ -58,9 +57,7 @@
     }
     #stat-panel h3:first-child { margin-top: 0; }
 
-    .stat-row {
-      margin-bottom: 0.55rem;
-    }
+    .stat-row { margin-bottom: 0.55rem; }
     .stat-row .stat-label {
       display: flex;
       justify-content: space-between;
@@ -69,37 +66,24 @@
       color: #ccc;
     }
     .stat-row .stat-label span { color: #a8dadc; font-weight: bold; }
-    .bar-track {
-      height: 7px;
-      background: #0f3460;
-      border-radius: 4px;
-      overflow: hidden;
-    }
-    .bar-fill {
-      height: 100%;
-      border-radius: 4px;
-      transition: width 0.4s ease;
-    }
+    .bar-track { height: 7px; background: #0f3460; border-radius: 4px; overflow: hidden; }
+    .bar-fill   { height: 100%; border-radius: 4px; transition: width 0.4s ease; }
 
-    .bar-health  { background: #57c27e; }
-    .bar-mood    { background: #a8dadc; }
-    .bar-energy  { background: #f7b731; }
-    .bar-sleep   { background: #7b8fd4; }
-    .bar-agency  { background: #e94560; }
-    .bar-eq      { background: #f4a261; }
-    .bar-self    { background: #c77dff; }
-    .bar-conf    { background: #74c0fc; }
-    .bar-social  { background: #69db7c; }
-    .bar-nutr    { background: #ffd43b; }
-
-    .bar-threat  { background: #e94560; }
+    .bar-health { background: #57c27e; }
+    .bar-mood   { background: #a8dadc; }
+    .bar-agency { background: #e94560; }
+    .bar-eq     { background: #f4a261; }
+    .bar-self   { background: #c77dff; }
+    .bar-conf   { background: #74c0fc; }
+    .bar-social { background: #69db7c; }
+    .bar-nutr   { background: #ffd43b; }
+    .bar-threat { background: #e94560; }
 
     .threat-row.high .bar-fill {
       animation: threat-pulse 1s ease infinite alternate;
     }
     @keyframes threat-pulse {
-      from { opacity: 1; }
-      to   { opacity: 0.5; }
+      from { opacity: 1; } to { opacity: 0.5; }
     }
 
     .tier-badge {
@@ -129,11 +113,7 @@
       flex-direction: column-reverse;
     }
 
-    .log-entry {
-      margin-bottom: 1.2rem;
-      line-height: 1.65;
-      font-size: 0.92rem;
-    }
+    .log-entry { margin-bottom: 1.2rem; line-height: 1.65; font-size: 0.92rem; }
     .log-entry .log-meta {
       font-size: 0.72rem;
       color: #555;
@@ -141,79 +121,51 @@
       text-transform: uppercase;
       letter-spacing: 1px;
     }
-    .log-entry.type-event .log-text { color: #f4a261; }
-    .log-entry.type-death  .log-text { color: #e94560; }
-    .log-entry.type-level  .log-text { color: #c77dff; }
+    .log-entry.type-event     .log-text { color: #f4a261; }
+    .log-entry.type-death     .log-text { color: #e94560; }
+    .log-entry.type-level     .log-text { color: #c77dff; }
     .log-entry.type-milestone .log-text { color: #a8dadc; }
-    .log-entry.type-normal .log-text { color: #ddd; }
+    .log-entry.type-normal    .log-text { color: #ddd; }
+    .log-entry.type-good      .log-text { color: #57c27e; }
+    .log-entry.type-bad       .log-text { color: #e94560; }
+    .log-entry.type-neutral   .log-text { color: #aaa; }
 
     /* ── ACTION AREA ── */
     #action-area {
       background: #16213e;
       border-top: 2px solid #0f3460;
-      padding: 0.8rem 1.2rem;
+      padding: 0.9rem 1.2rem;
       flex-shrink: 0;
     }
 
-    #energy-strip {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      margin-bottom: 0.7rem;
+    #action-area .prompt-line {
       font-size: 0.82rem;
       color: #a8dadc;
+      margin-bottom: 0.65rem;
+      letter-spacing: 0.3px;
     }
-    #energy-bar-track {
-      flex: 1;
-      height: 8px;
-      background: #0f3460;
-      border-radius: 4px;
-      overflow: hidden;
-    }
-    #energy-bar-fill {
-      height: 100%;
-      background: #f7b731;
-      border-radius: 4px;
-      transition: width 0.3s;
-    }
-    #energy-label { min-width: 60px; text-align: right; }
 
     #actions-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-bottom: 0.7rem;
+      gap: 0.45rem;
+      margin-bottom: 0.75rem;
     }
 
     .action-btn {
-      padding: 0.38rem 0.75rem;
-      font-size: 0.8rem;
+      padding: 0.4rem 0.85rem;
+      font-size: 0.82rem;
       border: none;
       border-radius: 6px;
       background: #0f3460;
       color: #eee;
       cursor: pointer;
-      transition: background 0.15s, transform 0.1s, opacity 0.15s;
+      transition: background 0.15s, transform 0.1s;
       letter-spacing: 0.3px;
     }
-    .action-btn:hover:not(:disabled) {
-      background: #1a4a8a;
-      transform: scale(1.03);
-    }
-    .action-btn.selected {
-      background: #e94560;
-      color: #fff;
-    }
-    .action-btn:disabled {
-      opacity: 0.3;
-      cursor: not-allowed;
-    }
-    .action-btn .cost-tag {
-      font-size: 0.68rem;
-      color: #f7b731;
-      margin-left: 4px;
-    }
-    .action-btn.selected .cost-tag { color: #ffd;  }
+    .action-btn:hover:not(:disabled) { background: #1a4a8a; transform: scale(1.03); }
+    .action-btn.selected { background: #e94560; color: #fff; }
+    .action-btn:disabled { opacity: 0.35; cursor: not-allowed; }
 
     #bottom-row {
       display: flex;
@@ -221,7 +173,7 @@
       gap: 1rem;
     }
     #selections-info { font-size: 0.8rem; color: #888; flex: 1; }
-    #next-day-btn {
+    #next-year-btn {
       padding: 0.5rem 1.8rem;
       font-size: 0.95rem;
       border: none;
@@ -232,14 +184,14 @@
       letter-spacing: 1px;
       transition: background 0.2s, transform 0.1s;
     }
-    #next-day-btn:hover { background: #c73652; transform: scale(1.04); }
-    #next-day-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+    #next-year-btn:hover { background: #c73652; transform: scale(1.04); }
+    #next-year-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
 
     /* ── MODAL ── */
     #modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.75);
+      background: rgba(0,0,0,0.78);
       z-index: 100;
       display: flex;
       align-items: center;
@@ -257,17 +209,26 @@
       max-height: 85vh;
       overflow-y: auto;
     }
-
-    #modal-box h2 {
-      color: #e94560;
-      margin-bottom: 0.8rem;
-      font-size: 1.4rem;
-      letter-spacing: 1px;
-    }
-    #modal-box h2.modal-title-blue { color: #a8dadc; }
+    #modal-box h2 { color: #e94560; margin-bottom: 0.8rem; font-size: 1.4rem; letter-spacing: 1px; }
+    #modal-box h2.modal-title-blue   { color: #a8dadc; }
     #modal-box h2.modal-title-purple { color: #c77dff; }
+    #modal-box h2.modal-title-green  { color: #57c27e; }
 
     #modal-body { font-size: 0.9rem; line-height: 1.7; color: #ccc; margin-bottom: 1.2rem; }
+
+    .outcome-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-bottom: 0.7rem;
+    }
+    .outcome-tag.good    { background: #1a3d28; color: #57c27e; }
+    .outcome-tag.neutral { background: #2a2a3a; color: #aaa; }
+    .outcome-tag.bad     { background: #3d1a20; color: #e94560; }
 
     #modal-choices { display: flex; flex-direction: column; gap: 0.5rem; }
 
@@ -296,9 +257,9 @@
       letter-spacing: 0.5px;
       transition: background 0.2s;
     }
-    .modal-single-btn:hover { background: #c73652; }
-    .modal-single-btn.blue { background: #a8dadc; color: #1a1a2e; }
-    .modal-single-btn.blue:hover { background: #7cc9cc; }
+    .modal-single-btn:hover  { background: #c73652; }
+    .modal-single-btn.blue   { background: #a8dadc; color: #1a1a2e; }
+    .modal-single-btn.blue:hover   { background: #7cc9cc; }
     .modal-single-btn.purple { background: #c77dff; color: #1a1a2e; }
     .modal-single-btn.purple:hover { background: #a855d4; }
 
@@ -314,23 +275,9 @@
     }
     #intro-screen.hidden { display: none; }
 
-    #intro-box {
-      text-align: center;
-      max-width: 480px;
-      padding: 2rem;
-    }
-    #intro-box h1 {
-      font-size: 2.8rem;
-      color: #e94560;
-      letter-spacing: 3px;
-      margin-bottom: 0.4rem;
-    }
-    #intro-box .tagline {
-      color: #a8dadc;
-      font-size: 1rem;
-      margin-bottom: 2rem;
-      letter-spacing: 1px;
-    }
+    #intro-box { text-align: center; max-width: 480px; padding: 2rem; }
+    #intro-box h1 { font-size: 2.8rem; color: #e94560; letter-spacing: 3px; margin-bottom: 0.4rem; }
+    #intro-box .tagline { color: #a8dadc; font-size: 1rem; margin-bottom: 2rem; letter-spacing: 1px; }
     #intro-box input[type=text] {
       width: 100%;
       padding: 0.7rem 1rem;
@@ -359,14 +306,6 @@
     #intro-box .start-btn:hover { background: #c73652; transform: scale(1.04); }
     #name-error { color: #e94560; font-size: 0.82rem; min-height: 1.2rem; margin-top: -0.5rem; margin-bottom: 0.5rem; }
 
-    /* ── SLEEP MODAL ── */
-    .sleep-option { display: flex; align-items: center; gap: 0.5rem; }
-    .sleep-slider {
-      flex: 1;
-      accent-color: #7b8fd4;
-    }
-    .sleep-val { min-width: 32px; text-align: right; color: #a8dadc; font-weight: bold; }
-
     /* scrollbars */
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: #0f3460; }
@@ -379,7 +318,7 @@
 <div id="intro-screen">
   <div id="intro-box">
     <h1>LIFE SIM</h1>
-    <p class="tagline">From 18 to the end — every choice shapes the story.</p>
+    <p class="tagline">From 18 to the end — every year shapes the story.</p>
     <label style="display:block;margin-bottom:0.4rem;color:#888;font-size:0.85rem;">What is your name?</label>
     <input type="text" id="name-input" placeholder="Enter your name" maxlength="24" autocomplete="off">
     <p id="name-error"></p>
@@ -390,8 +329,8 @@
 <!-- TOP BAR -->
 <div id="top-bar">
   <div class="tb-item"><span class="tb-label">Name</span><span class="tb-value" id="tb-name">—</span></div>
-  <div class="tb-item"><span class="tb-label">Age</span><span class="tb-value" id="tb-age">18.0</span></div>
-  <div class="tb-item"><span class="tb-label">Day</span><span class="tb-value" id="tb-day">1</span></div>
+  <div class="tb-item"><span class="tb-label">Age</span><span class="tb-value" id="tb-age">18</span></div>
+  <div class="tb-item"><span class="tb-label">Year</span><span class="tb-value" id="tb-year">1</span></div>
   <div class="tb-item" style="margin-left:auto"><span class="tb-label">Phase</span><span class="tb-value" id="tb-phase">—</span></div>
 </div>
 
@@ -408,15 +347,11 @@
   <div id="narrative-area">
     <div id="story-log"></div>
     <div id="action-area">
-      <div id="energy-strip">
-        <span>Energy</span>
-        <div id="energy-bar-track"><div id="energy-bar-fill" style="width:100%"></div></div>
-        <span id="energy-label">— / —</span>
-      </div>
+      <p class="prompt-line">How do you spend this year? Choose up to 2 priorities.</p>
       <div id="actions-grid"></div>
       <div id="bottom-row">
-        <span id="selections-info">Choose up to 2 actions, then advance the day.</span>
-        <button id="next-day-btn">Next Day</button>
+        <span id="selections-info">No priorities chosen yet.</span>
+        <button id="next-year-btn">Next Year</button>
       </div>
     </div>
   </div>
@@ -442,7 +377,7 @@ const pick  = arr => arr[rand(0, arr.length - 1)];
 function cycler(arr) {
   let pool = [];
   return function() {
-    if (!pool.length) pool = [...arr].map((_, i) => i);
+    if (!pool.length) pool = arr.map((_, i) => i);
     const idx = pool.splice(rand(0, pool.length - 1), 1)[0];
     return arr[idx];
   };
@@ -457,10 +392,10 @@ function initNewGame(name) {
   STATE = {
     name,
     age: 18,
-    day: 1,
+    year: 1,
     phase: 'playing',
     stats: {
-      health: 85, mood: 60, energy: 60, sleep: 70,
+      health: 85, mood: 60,
       agency: 30, emotionalIntelligence: 25,
       selfAwareness: 20, confidence: 30,
       social: 40, nutrition: 55
@@ -473,14 +408,10 @@ function initNewGame(name) {
       hasJob: false, inRelationship: false,
       therapyStreak: 0, exerciseStreak: 0, substanceStreak: 0,
       milestonesShown: {},
-      daysSinceEvent: 0,
-      actionsChosenToday: [],
-      sleepQuality: 70,
+      actionsChosenThisYear: [],
       pendingEvent: null
     }
   };
-  const energyMax = computeEnergyMax();
-  STATE.stats.energy = energyMax;
   appendLog(
     `You are ${name}, eighteen years old. The future stretches ahead like an unwritten page — wide, terrifying, yours.`,
     'milestone'
@@ -489,124 +420,123 @@ function initNewGame(name) {
 }
 
 // ════════════════════════════════════════════════
-//  ENERGY
-// ════════════════════════════════════════════════
-function computeEnergyMax() {
-  return clamp(40 + Math.floor(STATE.flags.sleepQuality * 0.4), 15, 80);
-}
-
-// ════════════════════════════════════════════════
 //  LOG
 // ════════════════════════════════════════════════
 function appendLog(text, type = 'normal') {
-  STATE.log.push({ day: STATE.day, age: STATE.age, text, type });
+  STATE.log.push({ year: STATE.year, age: STATE.age, text, type });
 }
 
 // ════════════════════════════════════════════════
 //  NARRATIVE POOLS
 // ════════════════════════════════════════════════
 const OPENING_LINES = {
-  'highMood_highEnergy': [
-    "Morning light comes easy. There is something almost reckless about feeling this capable.",
-    "You wake ahead of the alarm, mind already moving. Today feels like a door left open.",
-    "The day has weight, but the good kind — the kind that keeps your feet on the ground.",
-    "There is a lightness to the morning that you do not quite trust yet, but accept.",
-    "You stand at the window for a moment longer than necessary. The world looks manageable."
+  highMood_strong: [
+    "This year has a different quality to it — a clarity you have not felt in a while. You move through it with something approaching purpose.",
+    "There are stretches this year where you feel genuinely like yourself. That sounds small. It is not.",
+    "Looking back from the end of it, this was one of the better years. Not perfect, but real, and mostly good.",
+    "You carry this year lightly. The problems are still there, but they fit in your hands.",
+    "There is a confidence to your steps this year that did not used to be there. You notice it without making too much of it."
   ],
-  'highMood_lowEnergy': [
-    "The warmth is there, just beneath the fatigue — you are content, even if worn thin.",
-    "You smile at nothing in particular. The tiredness sits around the edges, not at the center.",
-    "Everything is a little slow today, but you find you do not mind. Some days ask less of you.",
-    "Drained but not unhappy — there is a difference, and today you understand it clearly.",
-    "The body is tired. The mood, for once, is not. You take what you can get."
+  highMood_fragile: [
+    "The year is mostly good, but the goodness feels provisional — like weather you do not trust yet.",
+    "You are okay this year. More than okay, some months. You take the good stretches for what they are.",
+    "It is a moderate year — nothing extraordinary, nothing catastrophic. You are learning to appreciate that.",
+    "The mood holds, mostly. There are dips, but they pass. You are getting better at waiting them out.",
+    "You look back at this year with something like gratitude, though the gratitude is quieter than you expected."
   ],
-  'lowMood_highEnergy': [
-    "You have energy today, though you are not sure what to do with it. A restless, aimless charge.",
-    "The body is willing; the mind is somewhere else entirely. You push forward anyway.",
-    "There is a hollow just below your sternum that no amount of sleep seems to fill.",
-    "Plenty of fuel, no clear direction. The engine runs and runs and runs.",
-    "You move through the morning with efficiency and little joy. That is enough, sometimes."
+  lowMood_fighting: [
+    "You spend much of this year in a kind of low-grade struggle — not losing, exactly, but not winning either.",
+    "It is a hard year. You get through it. That is the whole story, and it is enough.",
+    "The weight is heavier than usual this year. You carry it anyway. Some days that is all you can say.",
+    "There are weeks this year where just maintaining is the whole project. You do not always manage it.",
+    "You push through this year on momentum and stubbornness. It costs something. You pay it."
   ],
-  'lowMood_lowEnergy': [
-    "Getting up takes longer than it should. You negotiate with yourself before your feet hit the floor.",
-    "The day arrives like all the others — unremarkable, a little heavier than yesterday.",
-    "You dress in the dark. The light feels like an accusation you are not ready for.",
-    "Every motion costs something today. You are careful not to spend what you do not have.",
-    "A grey feeling, not quite sadness — more like the world viewed through frosted glass."
+  lowMood_sinking: [
+    "This year is one you will not look back on with fondness. You survive it. That will have to be enough.",
+    "Something has been pulling you down, and this year the pull is stronger. You are not sure how to name it.",
+    "The year passes in a kind of grey. You go through the motions. The motions go through you.",
+    "You are not well this year. You know it. Knowing does not fix it, but it is a start.",
+    "There is a version of this year where things are different. You are not living that version."
   ]
 };
 
-// Build cyclers per quadrant
 const OPENERS = {};
 for (const k in OPENING_LINES) OPENERS[k] = cycler(OPENING_LINES[k]);
 
 const STAT_COMMENTARY = {
   loneliness_high: [
-    "The silence in the apartment has started to feel textured, almost solid.",
-    "You scroll through names you have not contacted in months. You close the app.",
-    "The desire for company and the inability to reach out coexist without resolution."
+    "The distance between you and other people has become habitual this year. You are not sure when it started.",
+    "You go weeks without a real conversation. The silence has stopped feeling temporary.",
+    "There is an isolation to this year that you try not to examine too closely."
   ],
   depression_rising: [
-    "Something in you has started to withdraw — not dramatically, just quietly, like a tide going out.",
-    "You notice yourself making smaller and smaller commitments. Tomorrow, you keep saying. Tomorrow.",
-    "The flat feeling has been around for a few days now. You wonder, not for the first time, if this is just who you are."
+    "Something in you is retreating — not all at once, just incrementally, the way water withdraws from a shore.",
+    "The flat feeling has been reliable this year. You have made accommodations for it.",
+    "You function. You do what needs to be done. The question of whether you are okay hovers unanswered."
   ],
   depression_high: [
-    "There is a weight that follows you from room to room. You have stopped pretending otherwise.",
-    "Joy is not absent — it is simply far away, like a sound you remember but cannot locate.",
-    "Getting through the day is the whole project right now. You are trying not to let that feel like failure."
+    "There are months this year where the weight is structural — not something you carry, but something you live inside.",
+    "The darkness is not dramatic. It is patient and ordinary and always there.",
+    "You have stopped expecting much from yourself this year. That makes things easier and also worse."
   ],
   substance_rising: [
-    "The nights are getting blurry. You wake sometimes unsure of the order of things.",
-    "You tell yourself it is recreational. The word has begun to lose its shape.",
-    "There is a pattern forming. You choose not to name it."
+    "The drinking — or whatever it is — has become a more regular feature of the year than you would like to admit.",
+    "You notice the pattern but give it different names depending on the day.",
+    "The blurry evenings have multiplied. You tell yourself it is manageable. Mostly you believe it."
   ],
   health_low: [
-    "Your body has been sending signals you keep deferring. The inbox is getting full.",
-    "Something is off — not dramatically, but persistently. You make a mental note you will probably ignore.",
-    "The tiredness has a different quality to it lately. Less exhaustion, more erosion."
+    "Your body has been trying to tell you something this year. The signal is getting louder.",
+    "The physical toll of recent years is more visible now. The mirror has started having opinions.",
+    "Something is not right with the body. You have been deferring the conversation with it."
   ],
   mood_recovering: [
-    "There is something tentative and real beginning at the edges of your mood. You hold it carefully.",
-    "You noticed yourself laughing today — briefly, genuinely. You are not sure when that stopped being normal.",
-    "The grey is still there but not total. A few hours of actual presence — that counts for something."
+    "There are signs of something improving this year — tentative, not guaranteed, but real.",
+    "You catch yourself in unguarded moments that feel almost like the old version of yourself.",
+    "The recovery is slow and nonlinear, but it is happening. You choose to notice that."
   ]
 };
 const STAT_CYCLERS = {};
 for (const k in STAT_COMMENTARY) STAT_CYCLERS[k] = cycler(STAT_COMMENTARY[k]);
 
 const AGE_MILESTONES = {
-  21: "You are twenty-one. Legally, you are fully adult. In practice, you are still making it up as you go — which, you suspect, never really changes.",
-  25: "Quarter century. The years have started to feel shorter and fuller simultaneously. You are not the same person who started this.",
+  21: "You are twenty-one. Legally, fully adult. In practice, still making it up as you go — which, you suspect, never really changes.",
+  25: "Twenty-five. The years have started to feel shorter and fuller simultaneously. You are not the same person who started this.",
   30: "Thirty. The number lands differently than you expected — less like an ending, more like a shift in the light.",
   35: "Thirty-five. You can feel the weight of what you have chosen, and also what you have not. Both are real.",
   40: "Forty. There is a clarity here that the younger version of you lacked the patience for. Things matter differently now.",
-  50: "Fifty. Half a century, give or take. The mirror has stopped surprising you. You have learned to read it honestly.",
+  50: "Fifty. Half a century. The mirror has stopped surprising you. You have learned to read it honestly.",
   60: "Sixty. You think about the people you have outlasted, and the ones who have outlasted you. Gratitude and grief are not opposites.",
-  70: "Seventy. Time has a texture now — not compressed, exactly, but concentrated. Every day counts more than it used to."
+  70: "Seventy. Time has a texture now — concentrated. Every year counts more than it used to."
 };
 
-function generateDayNarrative() {
-  const { mood, energy } = STATE.stats;
-  const quadrant = `${mood >= 50 ? 'highMood' : 'lowMood'}_${energy >= 35 ? 'highEnergy' : 'lowEnergy'}`;
+function generateYearNarrative() {
+  const { mood } = STATE.stats;
+  const { depression } = STATE.threats;
+  const isHighMood = mood >= 50;
+  const isStrong   = mood >= 65 && depression < 40;
+  const isSinking  = mood < 35 || depression > 65;
+
+  let quadrant;
+  if (isStrong)       quadrant = 'highMood_strong';
+  else if (isHighMood) quadrant = 'highMood_fragile';
+  else if (isSinking)  quadrant = 'lowMood_sinking';
+  else                 quadrant = 'lowMood_fighting';
+
   let parts = [OPENERS[quadrant]()];
 
   // stat commentary
-  const { depression, loneliness, substanceAbuse } = STATE.threats;
+  const t = STATE.threats;
   const candidates = [];
-  if (loneliness > 55) candidates.push('loneliness_high');
-  if (depression > 40 && depression <= 65) candidates.push('depression_rising');
-  if (depression > 65) candidates.push('depression_high');
-  else if (depression > 20 && STATE.stats.mood > 55) candidates.push('mood_recovering');
-  if (substanceAbuse > 30) candidates.push('substance_rising');
+  if (t.loneliness > 55) candidates.push('loneliness_high');
+  if (t.depression > 40 && t.depression <= 65) candidates.push('depression_rising');
+  if (t.depression > 65) candidates.push('depression_high');
+  else if (t.depression > 20 && STATE.stats.mood > 55) candidates.push('mood_recovering');
+  if (t.substanceAbuse > 30) candidates.push('substance_rising');
   if (STATE.stats.health < 35) candidates.push('health_low');
 
-  if (candidates.length > 0) {
-    const key = pick(candidates);
-    parts.push(STAT_CYCLERS[key]());
-  }
+  if (candidates.length > 0) parts.push(STAT_CYCLERS[pick(candidates)]());
 
-  // age milestone (integer age, fire once)
+  // age milestone
   const ageInt = Math.floor(STATE.age);
   if (AGE_MILESTONES[ageInt] && !STATE.flags.milestonesShown[ageInt]) {
     STATE.flags.milestonesShown[ageInt] = true;
@@ -617,192 +547,152 @@ function generateDayNarrative() {
 }
 
 // ════════════════════════════════════════════════
-//  ACTIONS
+//  ACTIONS  (yearly priorities, no energy cost)
 // ════════════════════════════════════════════════
 const ALL_ACTIONS = [
   {
-    id: 'sleep_well', label: 'Rest properly', cost: 0,
-    desc: 'Prioritize recovery tonight.',
+    id: 'prioritize_health', label: 'Prioritize health',
+    desc: 'Regular exercise, proper sleep, medical check-ups.',
     effect(s) {
-      s.flags.sleepQuality = clamp(s.flags.sleepQuality + 15, 0, 100);
-      s.stats.health   = clamp(s.stats.health + 3, 0, 100);
-      s.threats.depression = clamp(s.threats.depression - 3, 0, 100);
-    },
-    xp: {}
-  },
-  {
-    id: 'all_nighter', label: 'Pull all-nighter', cost: 0,
-    desc: 'Push through the night.',
-    effect(s) {
-      s.flags.sleepQuality = clamp(s.flags.sleepQuality - 30, 0, 100);
-      s.stats.mood  = clamp(s.stats.mood - 10, 0, 100);
-      s.stats.health = clamp(s.stats.health - 5, 0, 100);
-    },
-    xp: {}
-  },
-  {
-    id: 'exercise', label: 'Exercise', cost: 25,
-    desc: 'Physical movement — cardio, weights, a long walk.',
-    effect(s) {
-      s.stats.health = clamp(s.stats.health + 5, 0, 100);
-      s.stats.mood   = clamp(s.stats.mood + 7, 0, 100);
-      s.stats.confidence = clamp(s.stats.confidence + 3, 0, 100);
-      s.threats.depression = clamp(s.threats.depression - 5, 0, 100);
+      s.stats.health    = clamp(s.stats.health + 12, 0, 100);
+      s.stats.mood      = clamp(s.stats.mood + 6, 0, 100);
+      s.stats.confidence = clamp(s.stats.confidence + 4, 0, 100);
+      s.threats.depression = clamp(s.threats.depression - 8, 0, 100);
       s.flags.exerciseStreak = (s.flags.exerciseStreak || 0) + 1;
     },
     xp: { confidence: 15 }
   },
   {
-    id: 'eat_well', label: 'Eat well', cost: 10,
-    desc: 'A proper meal, actual vegetables.',
+    id: 'eat_well', label: 'Eat well',
+    desc: 'Consistent attention to nutrition throughout the year.',
     effect(s) {
-      s.stats.health    = clamp(s.stats.health + 4, 0, 100);
-      s.stats.nutrition = clamp(s.stats.nutrition + 15, 0, 100);
-      s.stats.mood      = clamp(s.stats.mood + 3, 0, 100);
+      s.stats.health    = clamp(s.stats.health + 8, 0, 100);
+      s.stats.nutrition = clamp(s.stats.nutrition + 20, 0, 100);
+      s.stats.mood      = clamp(s.stats.mood + 4, 0, 100);
     },
-    xp: { nutrition: 10 }
+    xp: { nutrition: 20 }
   },
   {
-    id: 'eat_junk', label: 'Eat junk', cost: 5,
-    desc: 'Fast food, delivery, whatever is closest.',
+    id: 'work_hard', label: 'Work hard',
+    desc: 'Devote serious effort to career, studies, or a major project.',
     effect(s) {
-      s.stats.nutrition = clamp(s.stats.nutrition - 10, 0, 100);
-      s.stats.health    = clamp(s.stats.health - 2, 0, 100);
-      s.stats.mood      = clamp(s.stats.mood + 2, 0, 100); // brief comfort
-    },
-    xp: {}
-  },
-  {
-    id: 'work_hard', label: 'Work hard', cost: 30,
-    desc: 'Put in real effort — career, studies, or a side project.',
-    effect(s) {
-      s.stats.agency     = clamp(s.stats.agency + 4, 0, 100);
-      s.stats.confidence = clamp(s.stats.confidence + 2, 0, 100);
+      s.stats.agency     = clamp(s.stats.agency + 10, 0, 100);
+      s.stats.confidence = clamp(s.stats.confidence + 6, 0, 100);
       s.flags.hasJob     = true;
     },
-    xp: { agency: 20 }
+    xp: { agency: 30 }
   },
   {
-    id: 'socialize', label: 'Socialize', cost: 20,
-    desc: 'Spend time with people — friends, dates, strangers.',
+    id: 'invest_relationships', label: 'Invest in relationships',
+    desc: 'Time and energy toward friends, family, community.',
     effect(s) {
-      s.stats.social   = clamp(s.stats.social + 8, 0, 100);
-      s.stats.mood     = clamp(s.stats.mood + 6, 0, 100);
-      s.threats.loneliness = clamp(s.threats.loneliness - 10, 0, 100);
+      s.stats.social   = clamp(s.stats.social + 14, 0, 100);
+      s.stats.mood     = clamp(s.stats.mood + 8, 0, 100);
+      s.threats.loneliness = clamp(s.threats.loneliness - 18, 0, 100);
     },
-    xp: { emotionalIntelligence: 15, social: 10 }
+    xp: { emotionalIntelligence: 20, social: 15 }
   },
   {
-    id: 'substances', label: 'Drink / use', cost: 15,
-    desc: 'Alcohol or other substances.',
+    id: 'drink_use', label: 'Lean on substances',
+    desc: 'Alcohol or other substances become a regular crutch.',
     effect(s) {
-      s.threats.substanceAbuse = clamp(s.threats.substanceAbuse + 8, 0, 100);
-      s.stats.mood  = clamp(s.stats.mood + 8, 0, 100);  // short-term
-      s.stats.health = clamp(s.stats.health - 4, 0, 100);
+      s.threats.substanceAbuse = clamp(s.threats.substanceAbuse + 18, 0, 100);
+      s.stats.mood  = clamp(s.stats.mood + 5, 0, 100);
+      s.stats.health = clamp(s.stats.health - 10, 0, 100);
       s.flags.substanceStreak = (s.flags.substanceStreak || 0) + 1;
     },
     xp: {}
   },
   {
-    id: 'journal', label: 'Journal + meditate', cost: 10,
-    desc: 'Write, reflect, sit with yourself.',
+    id: 'inner_work', label: 'Inner work',
+    desc: 'Journaling, meditation, therapy — turning toward yourself.',
     effect(s) {
-      s.stats.selfAwareness = clamp(s.stats.selfAwareness + 5, 0, 100);
-      s.stats.mood          = clamp(s.stats.mood + 4, 0, 100);
-      s.threats.depression  = clamp(s.threats.depression - 4, 0, 100);
-      s.threats.loneliness  = clamp(s.threats.loneliness - 3, 0, 100);
+      s.stats.selfAwareness = clamp(s.stats.selfAwareness + 10, 0, 100);
+      s.stats.emotionalIntelligence = clamp(s.stats.emotionalIntelligence + 8, 0, 100);
+      s.stats.mood          = clamp(s.stats.mood + 7, 0, 100);
+      s.threats.depression  = clamp(s.threats.depression - 12, 0, 100);
+      s.threats.loneliness  = clamp(s.threats.loneliness - 8, 0, 100);
+      s.flags.therapyStreak = (s.flags.therapyStreak || 0) + 1;
     },
-    xp: { selfAwareness: 20 }
+    xp: { selfAwareness: 30, emotionalIntelligence: 20 }
   },
   {
-    id: 'therapy', label: 'Seek therapy', cost: 20,
-    desc: 'Professional support — costly but profound.',
+    id: 'pursue_passion', label: 'Pursue a passion',
+    desc: 'Something you do for its own sake — art, craft, sport, curiosity.',
     effect(s) {
-      s.stats.emotionalIntelligence = clamp(s.stats.emotionalIntelligence + 6, 0, 100);
-      s.stats.selfAwareness         = clamp(s.stats.selfAwareness + 4, 0, 100);
-      s.threats.depression          = clamp(s.threats.depression - 8, 0, 100);
-      s.threats.loneliness          = clamp(s.threats.loneliness - 5, 0, 100);
-      s.flags.therapyStreak         = (s.flags.therapyStreak || 0) + 1;
+      s.stats.mood          = clamp(s.stats.mood + 10, 0, 100);
+      s.stats.selfAwareness = clamp(s.stats.selfAwareness + 6, 0, 100);
+      s.threats.loneliness  = clamp(s.threats.loneliness - 6, 0, 100);
     },
-    xp: { emotionalIntelligence: 25, selfAwareness: 15 }
+    xp: { selfAwareness: 15 }
   },
   {
-    id: 'hobby', label: 'Pursue hobby', cost: 20,
-    desc: 'Something you do for its own sake.',
+    id: 'coast', label: 'Coast through it',
+    desc: 'Let the year pass without much intention.',
     effect(s) {
-      s.stats.mood          = clamp(s.stats.mood + 8, 0, 100);
-      s.stats.selfAwareness = clamp(s.stats.selfAwareness + 3, 0, 100);
-      s.threats.loneliness  = clamp(s.threats.loneliness - 4, 0, 100);
-    },
-    xp: { selfAwareness: 10 }
-  },
-  {
-    id: 'nothing', label: 'Do nothing', cost: 0,
-    desc: 'Let the day pass.',
-    effect(s) {
-      s.threats.loneliness = clamp(s.threats.loneliness + 3, 0, 100);
-      s.stats.mood = clamp(s.stats.mood - 2, 0, 100);
+      s.threats.loneliness = clamp(s.threats.loneliness + 8, 0, 100);
+      s.stats.mood  = clamp(s.stats.mood - 5, 0, 100);
+      s.stats.agency = clamp(s.stats.agency - 3, 0, 100);
     },
     xp: {}
   },
-  // Tier-unlocked actions
+  // Tier-unlocked
   {
-    id: 'take_risk', label: 'Take a risk', cost: 25,
-    desc: 'Step outside your comfort zone — a bold move.',
+    id: 'take_risk', label: 'Take a major risk',
+    desc: 'A bold move — new city, career change, venture, leap of faith.',
     tierReq: { agency: 2 },
     effect(s) {
       const roll = rand(1, 100);
       if (roll > 40) {
-        s.stats.agency     = clamp(s.stats.agency + 8, 0, 100);
-        s.stats.confidence = clamp(s.stats.confidence + 6, 0, 100);
-        appendLog(`The risk paid off. There is a satisfaction in that which no safe choice can replicate.`, 'normal');
+        s.stats.agency     = clamp(s.stats.agency + 15, 0, 100);
+        s.stats.confidence = clamp(s.stats.confidence + 12, 0, 100);
+        appendLog(`The risk paid off. There is a satisfaction in that which no safe choice can replicate.`, 'good');
       } else {
-        s.stats.mood = clamp(s.stats.mood - 8, 0, 100);
-        appendLog(`It did not go the way you hoped. You sit with the fallout and try to learn something from it.`, 'normal');
+        s.stats.mood  = clamp(s.stats.mood - 12, 0, 100);
+        s.threats.depression = clamp(s.threats.depression + 8, 0, 100);
+        appendLog(`The risk did not land the way you hoped. You sit with the fallout and try to learn something from it.`, 'bad');
       }
     },
-    xp: { agency: 30 }
+    xp: { agency: 40 }
   },
   {
-    id: 'deep_connect', label: 'Deep conversation', cost: 20,
-    desc: 'Have a real, honest exchange with someone.',
+    id: 'deep_bonds', label: 'Build deep bonds',
+    desc: 'Invest in a small number of genuinely close relationships.',
     tierReq: { emotionalIntelligence: 2 },
     effect(s) {
-      s.stats.social   = clamp(s.stats.social + 12, 0, 100);
-      s.stats.mood     = clamp(s.stats.mood + 10, 0, 100);
-      s.threats.loneliness = clamp(s.threats.loneliness - 15, 0, 100);
+      s.stats.social   = clamp(s.stats.social + 18, 0, 100);
+      s.stats.mood     = clamp(s.stats.mood + 14, 0, 100);
+      s.threats.loneliness = clamp(s.threats.loneliness - 25, 0, 100);
     },
-    xp: { emotionalIntelligence: 20, social: 15 }
+    xp: { emotionalIntelligence: 30, social: 20 }
   },
   {
-    id: 'mentor', label: 'Seek mentorship', cost: 15,
-    desc: 'Learn from someone further down the road.',
+    id: 'seek_wisdom', label: 'Seek wisdom',
+    desc: 'Mentorship, reading, reflection — learning from those further along.',
     tierReq: { selfAwareness: 2 },
     effect(s) {
-      s.stats.agency     = clamp(s.stats.agency + 5, 0, 100);
-      s.stats.confidence = clamp(s.stats.confidence + 5, 0, 100);
-      s.stats.selfAwareness = clamp(s.stats.selfAwareness + 4, 0, 100);
+      s.stats.agency     = clamp(s.stats.agency + 8, 0, 100);
+      s.stats.confidence = clamp(s.stats.confidence + 8, 0, 100);
+      s.stats.selfAwareness = clamp(s.stats.selfAwareness + 8, 0, 100);
     },
-    xp: { selfAwareness: 20, agency: 15 }
+    xp: { selfAwareness: 30, agency: 20 }
   }
 ];
 
 function buildAvailableActions() {
-  const energy = STATE.stats.energy;
   return ALL_ACTIONS.filter(a => {
-    if (a.tierReq) {
-      for (const [skill, tier] of Object.entries(a.tierReq)) {
-        if ((STATE.skillTiers[skill] || 0) < tier) return false;
-      }
+    if (!a.tierReq) return true;
+    for (const [skill, tier] of Object.entries(a.tierReq)) {
+      if ((STATE.skillTiers[skill] || 0) < tier) return false;
     }
-    return true; // show even if over-energy; disable in UI
+    return true;
   });
 }
 
 // ════════════════════════════════════════════════
 //  XP + SKILL TIERS
 // ════════════════════════════════════════════════
-const XP_THRESHOLDS = [0, 100, 250, 500]; // tier 0,1,2,3
+const XP_THRESHOLDS = [0, 80, 200, 400];
 const TIER_NAMES = { 0: 'Novice', 1: 'Developing', 2: 'Capable', 3: 'Mastered' };
 const SKILL_LABELS = {
   agency: 'Agency', emotionalIntelligence: 'Emotional Intel.',
@@ -833,33 +723,35 @@ function computeTier(xp) {
 }
 
 // ════════════════════════════════════════════════
-//  PASSIVE EFFECTS
+//  PASSIVE EFFECTS  (yearly scale)
 // ════════════════════════════════════════════════
-function computeDailyPassiveEffects() {
+function computeYearlyPassiveEffects() {
   const s = STATE;
   // loneliness feeds depression
-  if (s.threats.loneliness > 60) s.threats.depression = clamp(s.threats.depression + 2, 0, 100);
-  // substance feeds health decline
-  if (s.threats.substanceAbuse > 40) s.stats.health = clamp(s.stats.health - Math.floor(s.threats.substanceAbuse / 25), 0, 100);
-  // high depression hits mood
-  if (s.threats.depression > 50) s.stats.mood = clamp(s.stats.mood - 3, 0, 100);
+  if (s.threats.loneliness > 55) s.threats.depression = clamp(s.threats.depression + 6, 0, 100);
+  // substance abuse degrades health
+  if (s.threats.substanceAbuse > 30) s.stats.health = clamp(s.stats.health - Math.floor(s.threats.substanceAbuse / 15), 0, 100);
+  // high depression suppresses mood
+  if (s.threats.depression > 50) s.stats.mood = clamp(s.stats.mood - 8, 0, 100);
   // natural mood drift toward 50
-  s.stats.mood = clamp(s.stats.mood + (s.stats.mood < 50 ? 1 : -1), 0, 100);
-  // nutrition affects health slowly
-  if (s.stats.nutrition < 25) s.stats.health = clamp(s.stats.health - 1, 0, 100);
-  else if (s.stats.nutrition > 70) s.stats.health = clamp(s.stats.health + 1, 0, 100);
-  // daily nutrition decay
-  s.stats.nutrition = clamp(s.stats.nutrition - 8, 0, 100);
+  const drift = s.stats.mood < 50 ? 3 : -3;
+  s.stats.mood = clamp(s.stats.mood + drift, 0, 100);
+  // nutrition drift back to baseline
+  s.stats.nutrition = clamp(s.stats.nutrition - 15, 0, 100);
+  // poor nutrition degrades health over time
+  if (s.stats.nutrition < 20) s.stats.health = clamp(s.stats.health - 3, 0, 100);
+  else if (s.stats.nutrition > 65) s.stats.health = clamp(s.stats.health + 2, 0, 100);
   // therapy streak bonus
-  if (s.flags.therapyStreak > 3) s.threats.depression = clamp(s.threats.depression - 1, 0, 100);
-  // tier bonuses: eq reduces loneliness growth
-  if (s.skillTiers.emotionalIntelligence >= 2) s.threats.loneliness = clamp(s.threats.loneliness - 2, 0, 100);
+  if (s.flags.therapyStreak > 2) s.threats.depression = clamp(s.threats.depression - 4, 0, 100);
+  // EQ tier reduces loneliness growth
+  if (s.skillTiers.emotionalIntelligence >= 2) s.threats.loneliness = clamp(s.threats.loneliness - 5, 0, 100);
   // confidence tier: mood floor
   const moodFloor = s.skillTiers.confidence >= 1 ? 15 : 0;
   if (s.stats.mood < moodFloor) s.stats.mood = moodFloor;
-  // substance streak makes it worse
-  if (s.flags.substanceStreak > 5) s.threats.substanceAbuse = clamp(s.threats.substanceAbuse + 2, 0, 100);
-  // reset streaks if action not taken yesterday (handled in apply)
+  // prolonged substance use worsens
+  if (s.flags.substanceStreak > 3) s.threats.substanceAbuse = clamp(s.threats.substanceAbuse + 5, 0, 100);
+  // age-related health decline (mild, after 50)
+  if (s.age > 50) s.stats.health = clamp(s.stats.health - Math.floor((s.age - 50) / 15), 0, 100);
 }
 
 // ════════════════════════════════════════════════
@@ -867,9 +759,9 @@ function computeDailyPassiveEffects() {
 // ════════════════════════════════════════════════
 function checkDeathConditions() {
   const s = STATE;
-  if (s.stats.health <= 0) return { cause: 'health', text: 'Your body gave out — worn down by years of neglect and circumstance. The end came quietly, in a hospital bed, with unfamiliar faces.' };
+  if (s.stats.health <= 0) return { cause: 'health', text: 'Your body gave out — worn down by years of neglect and circumstance. The end came quietly, with unfamiliar faces nearby.' };
   if (s.threats.depression >= 90 && s.stats.agency <= 20) return { cause: 'depression', text: 'The darkness had been growing for a long time. In the end, it was simply too heavy to carry alone, and you had not let anyone close enough to help.' };
-  if (s.threats.substanceAbuse >= 95) return { cause: 'substances', text: 'The substances that had once softened the edges of things eventually became the whole thing. An overdose. It was not entirely a surprise.' };
+  if (s.threats.substanceAbuse >= 95) return { cause: 'substances', text: 'The substances that had once softened the edges eventually became the whole thing. An overdose. It was not entirely a surprise.' };
   if (s.age >= 80) return { cause: 'age', text: 'Eighty years. You made it. The body is done, but the life — the actual life — was full of more than you could have predicted at eighteen.' };
   return null;
 }
@@ -894,458 +786,247 @@ function buildEpitaph(cause) {
 }
 
 // ════════════════════════════════════════════════
-//  EVENTS
+//  EVENTS  — one per year, three outcomes
+//  Outcome determined by dice roll (1–100) + modifier:
+//    good    : roll > 65
+//    neutral : roll 35–65
+//    bad     : roll < 35
+//  Modifier: (EQ + selfAwareness) / 10 * 1.5  (max +15)
 // ════════════════════════════════════════════════
+function rollOutcome() {
+  const mod = ((STATE.stats.emotionalIntelligence + STATE.stats.selfAwareness) / 10) * 1.5;
+  const roll = clamp(rand(1, 100) + mod, 1, 115);
+  if (roll > 65) return 'good';
+  if (roll >= 35) return 'neutral';
+  return 'bad';
+}
+
 const EVENTS = [
   {
-    id: 'job_offer',
-    title: 'A job offer',
-    condition: s => s.flags.hasJob && s.stats.agency > 40,
-    weight: 3,
-    text: "A recruiter messages you about a position — better pay, more responsibility, different city. It would mean leaving behind the comfortable and the familiar.",
-    choices: [
-      { label: 'Take the offer', key: 'take' },
-      { label: 'Decline, stay put', key: 'decline' }
-    ],
-    outcomes: {
-      take(s, roll) {
-        if (roll > 40) {
-          s.stats.agency = clamp(s.stats.agency + 12, 0, 100);
-          s.stats.confidence = clamp(s.stats.confidence + 8, 0, 100);
-          return { text: "The new role is harder than advertised, but you grow into it. The discomfort was the point.", xp: { agency: 40 } };
-        }
-        s.stats.mood = clamp(s.stats.mood - 10, 0, 100);
-        s.threats.loneliness = clamp(s.threats.loneliness + 15, 0, 100);
-        return { text: "The new city is lonely and the role overwhelming. You wonder if you made a mistake.", xp: {} };
-      },
-      decline(s) {
-        s.stats.mood = clamp(s.stats.mood - 4, 0, 100);
-        return { text: "You watch the opportunity close. There is relief in that, and also the quiet ache of the road not taken.", xp: {} };
-      }
-    }
-  },
-  {
-    id: 'friendship_crisis',
-    title: 'A friendship under strain',
-    condition: s => s.stats.social > 30,
+    id: 'career_crossroads',
+    title: 'A career crossroads',
+    condition: s => s.year > 1,
     weight: 4,
-    text: "Someone you have known for years says something that cuts. There is truth in it that makes it harder to dismiss.",
-    choices: [
-      { label: 'Address it honestly', key: 'address' },
-      { label: 'Let it pass in silence', key: 'ignore' }
-    ],
+    text: "Work throws up a fork in the road this year — a new opportunity, a difficult colleague, a moment that demands a choice about who you want to be professionally.",
     outcomes: {
-      address(s, roll) {
-        if (roll > 35) {
-          s.stats.social = clamp(s.stats.social + 10, 0, 100);
-          s.stats.emotionalIntelligence = clamp(s.stats.emotionalIntelligence + 5, 0, 100);
-          return { text: "The conversation is hard and long. At the end of it, something is repaired that you had not realized was broken.", xp: { emotionalIntelligence: 30 } };
-        }
-        s.stats.social = clamp(s.stats.social - 8, 0, 100);
-        s.threats.loneliness = clamp(s.threats.loneliness + 8, 0, 100);
-        return { text: "It does not go well. The friendship survives, barely, in a smaller form.", xp: {} };
-      },
-      ignore(s) {
-        s.stats.mood = clamp(s.stats.mood - 6, 0, 100);
-        s.threats.loneliness = clamp(s.threats.loneliness + 5, 0, 100);
-        return { text: "You say nothing. The unsaid thing settles between you like sediment.", xp: {} };
-      }
+      good:    { text: "You navigate it well. The opportunity opens further than you expected, and you step through it with something like confidence.", stat(s) { s.stats.agency = clamp(s.stats.agency + 12, 0, 100); s.stats.confidence = clamp(s.stats.confidence + 8, 0, 100); }, xp: { agency: 30 } },
+      neutral: { text: "It resolves without drama. You keep your footing, lose nothing important, and learn a little about how these things go.", stat(s) { s.stats.agency = clamp(s.stats.agency + 4, 0, 100); }, xp: {} },
+      bad:     { text: "It does not go the way you wanted. You come out of the year a little bruised, professionally, and unsure what to try next.", stat(s) { s.stats.mood = clamp(s.stats.mood - 10, 0, 100); s.stats.confidence = clamp(s.stats.confidence - 6, 0, 100); }, xp: {} }
     }
   },
   {
-    id: 'health_scare',
-    title: 'A health scare',
-    condition: s => s.stats.health < 50 || s.threats.substanceAbuse > 40,
-    weight: 5,
-    text: "Something is wrong with your body — not dramatically, but enough that a doctor takes it seriously. You are told to make changes.",
-    choices: [
-      { label: 'Take it seriously', key: 'serious' },
-      { label: 'Minimize and move on', key: 'minimize' }
-    ],
+    id: 'friendship_test',
+    title: 'A friendship under strain',
+    condition: s => s.stats.social > 25,
+    weight: 4,
+    text: "Something shifts in one of your close friendships this year — distance, conflict, a failure to show up. The question of whether it survives hangs over several months.",
     outcomes: {
-      serious(s) {
-        s.stats.health = clamp(s.stats.health + 10, 0, 100);
-        s.threats.substanceAbuse = clamp(s.threats.substanceAbuse - 10, 0, 100);
-        s.stats.selfAwareness = clamp(s.stats.selfAwareness + 6, 0, 100);
-        return { text: "You make the appointments. You make the changes. The body, slowly, responds.", xp: { selfAwareness: 25 } };
-      },
-      minimize(s) {
-        s.stats.health = clamp(s.stats.health - 5, 0, 100);
-        return { text: "You tell yourself it was nothing. Statistically, you might be right. But the body has a longer memory than you do.", xp: {} };
-      }
+      good:    { text: "The friendship makes it through and comes out stronger. You are both a little more honest with each other now.", stat(s) { s.stats.social = clamp(s.stats.social + 10, 0, 100); s.threats.loneliness = clamp(s.threats.loneliness - 10, 0, 100); }, xp: { emotionalIntelligence: 25 } },
+      neutral: { text: "The friendship survives, in a smaller form. Something was lost; something remains. You make your peace with the ratio.", stat(s) { s.stats.mood = clamp(s.stats.mood - 3, 0, 100); }, xp: {} },
+      bad:     { text: "The friendship does not survive the year. The ending is quiet and without resolution. You carry the shape of it for a long time.", stat(s) { s.stats.social = clamp(s.stats.social - 8, 0, 100); s.threats.loneliness = clamp(s.threats.loneliness + 12, 0, 100); s.stats.mood = clamp(s.stats.mood - 8, 0, 100); }, xp: {} }
     }
   },
   {
-    id: 'romantic_possibility',
-    title: 'Someone worth knowing',
-    condition: s => s.stats.social > 40 && !s.flags.inRelationship,
+    id: 'health_event',
+    title: 'A health reckoning',
+    condition: s => s.stats.health < 60 || s.threats.substanceAbuse > 35,
+    weight: 6,
+    text: "Your body makes a demand this year — a diagnosis, a scare, a doctor who says the word 'concerning'. The gap between how you have been living and how you need to live is suddenly visible.",
+    outcomes: {
+      good:    { text: "You take it seriously. The appointments are kept, the changes are made, and the body — slowly, grudgingly — responds.", stat(s) { s.stats.health = clamp(s.stats.health + 15, 0, 100); s.threats.substanceAbuse = clamp(s.threats.substanceAbuse - 12, 0, 100); }, xp: { selfAwareness: 20 } },
+      neutral: { text: "You manage the immediate problem. The deeper patterns stay mostly in place. The body accepts the compromise, for now.", stat(s) { s.stats.health = clamp(s.stats.health + 5, 0, 100); }, xp: {} },
+      bad:     { text: "The warning goes unheeded, or the change proves unsustainable. By the end of the year, things are not better.", stat(s) { s.stats.health = clamp(s.stats.health - 10, 0, 100); s.threats.depression = clamp(s.threats.depression + 8, 0, 100); }, xp: {} }
+    }
+  },
+  {
+    id: 'romantic',
+    title: 'Something romantic',
+    condition: s => s.stats.social > 35,
     weight: 3,
-    text: "You meet someone. It is too early to know what it means, but the conversation does not want to end.",
-    choices: [
-      { label: 'Pursue the connection', key: 'pursue' },
-      { label: 'Keep your distance', key: 'distance' }
-    ],
+    text: "Someone enters your life this year with the quality of a question. It is too early to know what kind of question, but the asking has begun.",
     outcomes: {
-      pursue(s, roll) {
-        if (roll > 35) {
-          s.flags.inRelationship = true;
-          s.stats.mood = clamp(s.stats.mood + 15, 0, 100);
-          s.threats.loneliness = clamp(s.threats.loneliness - 20, 0, 100);
-          return { text: "Something real starts. You are careful with it, the way you are careful with things that matter.", xp: { emotionalIntelligence: 20 } };
-        }
-        s.stats.mood = clamp(s.stats.mood - 5, 0, 100);
-        return { text: "It does not go anywhere. You remind yourself that not everything is meant to. It helps, a little.", xp: {} };
-      },
-      distance(s) {
-        s.threats.loneliness = clamp(s.threats.loneliness + 5, 0, 100);
-        return { text: "You step back. The reasons feel solid enough, even if you will not examine them too closely.", xp: {} };
-      }
+      good:    { text: "Something real takes root. You are careful with it, and the care is returned. By the end of the year, you are not alone in the way you were before.", stat(s) { s.flags.inRelationship = true; s.stats.mood = clamp(s.stats.mood + 15, 0, 100); s.threats.loneliness = clamp(s.threats.loneliness - 20, 0, 100); }, xp: { emotionalIntelligence: 20 } },
+      neutral: { text: "It does not go anywhere lasting, but the months of it were good. You remember the feeling with more warmth than regret.", stat(s) { s.stats.mood = clamp(s.stats.mood + 4, 0, 100); s.threats.loneliness = clamp(s.threats.loneliness - 5, 0, 100); }, xp: {} },
+      bad:     { text: "It ends badly, or simply ends without resolution. You spend several months in the afterwards, trying to make sense of it.", stat(s) { s.stats.mood = clamp(s.stats.mood - 10, 0, 100); s.threats.loneliness = clamp(s.threats.loneliness + 8, 0, 100); }, xp: {} }
     }
   },
   {
     id: 'substance_intervention',
-    title: 'Someone says something',
-    condition: s => s.threats.substanceAbuse > 60,
-    weight: 10, // high priority threshold event
-    text: "A friend pulls you aside. Their voice is careful and careful and careful. They are choosing every word. They ask if you are okay — but what they mean is: they are scared for you.",
-    choices: [
-      { label: 'Hear them out, be honest', key: 'hear' },
-      { label: 'Deflect, reassure them', key: 'deflect' }
-    ],
+    title: 'Someone notices',
+    condition: s => s.threats.substanceAbuse > 55,
+    weight: 9,
+    text: "A friend or family member pulls you aside this year. Their voice is careful. They are choosing every word. What they say is that they are scared for you.",
     outcomes: {
-      hear(s) {
-        s.threats.substanceAbuse = clamp(s.threats.substanceAbuse - 20, 0, 100);
-        s.threats.depression = clamp(s.threats.depression - 5, 0, 100);
-        s.stats.emotionalIntelligence = clamp(s.stats.emotionalIntelligence + 8, 0, 100);
-        return { text: "It is one of the hardest conversations you have had. It is also one of the most important.", xp: { emotionalIntelligence: 40, selfAwareness: 30 } };
-      },
-      deflect(s) {
-        s.threats.loneliness = clamp(s.threats.loneliness + 10, 0, 100);
-        return { text: "You smile and they leave less certain than they arrived. You are left with the feeling of having turned away something that was trying to help.", xp: {} };
-      }
+      good:    { text: "You hear them. Fully. The conversation is one of the hardest of your life and one of the most important. Things begin to shift.", stat(s) { s.threats.substanceAbuse = clamp(s.threats.substanceAbuse - 25, 0, 100); s.threats.depression = clamp(s.threats.depression - 8, 0, 100); s.stats.emotionalIntelligence = clamp(s.stats.emotionalIntelligence + 10, 0, 100); }, xp: { emotionalIntelligence: 40, selfAwareness: 30 } },
+      neutral: { text: "You hear some of it. You make some changes. The problem gets smaller without going away. It is a start, if not a resolution.", stat(s) { s.threats.substanceAbuse = clamp(s.threats.substanceAbuse - 10, 0, 100); }, xp: { selfAwareness: 15 } },
+      bad:     { text: "You deflect and reassure. They leave less certain than they arrived. You are left with the feeling of having turned away something trying to help.", stat(s) { s.threats.loneliness = clamp(s.threats.loneliness + 12, 0, 100); s.threats.depression = clamp(s.threats.depression + 8, 0, 100); }, xp: {} }
     }
   },
   {
     id: 'loss',
     title: 'Someone is gone',
-    condition: s => s.age > 30,
-    weight: 2,
-    text: "Someone close to you dies. It is not a surprise — nothing ever is, entirely — but that does not make it smaller.",
-    choices: [
-      { label: 'Let yourself grieve', key: 'grieve' },
-      { label: 'Keep moving, stay busy', key: 'busy' }
-    ],
+    condition: s => s.age > 28,
+    weight: 3,
+    text: "Someone close to you dies this year. It is not a surprise — nothing ever fully is — but that does not make it smaller.",
     outcomes: {
-      grieve(s) {
-        s.stats.mood = clamp(s.stats.mood - 15, 0, 100);
-        s.stats.selfAwareness = clamp(s.stats.selfAwareness + 10, 0, 100);
-        s.threats.depression = clamp(s.threats.depression + 8, 0, 100);
-        return { text: "The grief is real and present and you do not hide from it. It takes months. It changes the shape of things.", xp: { selfAwareness: 35 } };
-      },
-      busy(s) {
-        s.stats.mood = clamp(s.stats.mood - 8, 0, 100);
-        s.threats.depression = clamp(s.threats.depression + 15, 0, 100);
-        return { text: "You stay in motion. The grief waits. It is patient. It will find its moment.", xp: {} };
-      }
+      good:    { text: "The grief is present and real, and you do not hide from it. Something in you deepens this year. You come out of it changed in ways that feel, eventually, like growth.", stat(s) { s.stats.selfAwareness = clamp(s.stats.selfAwareness + 12, 0, 100); s.stats.mood = clamp(s.stats.mood - 8, 0, 100); }, xp: { selfAwareness: 35 } },
+      neutral: { text: "You get through the year. The grief sits alongside you in a quiet way. Life continues, differently weighted.", stat(s) { s.stats.mood = clamp(s.stats.mood - 5, 0, 100); s.threats.depression = clamp(s.threats.depression + 5, 0, 100); }, xp: {} },
+      bad:     { text: "The loss tips something. The grief finds no outlet. By the end of the year, the depression is heavier than it was before.", stat(s) { s.stats.mood = clamp(s.stats.mood - 14, 0, 100); s.threats.depression = clamp(s.threats.depression + 18, 0, 100); s.threats.loneliness = clamp(s.threats.loneliness + 10, 0, 100); }, xp: {} }
     }
   },
   {
     id: 'financial_crisis',
-    title: 'Money runs out',
-    condition: s => s.day > 60,
+    title: 'Financial pressure',
+    condition: s => s.year > 3,
     weight: 3,
-    text: "An unexpected expense — medical, legal, just bad luck — lands you in genuine financial trouble. The number in the account is frightening.",
-    choices: [
-      { label: 'Face it head-on, ask for help', key: 'face' },
-      { label: 'Ignore it, hope something changes', key: 'ignore' }
-    ],
+    text: "An unexpected expense — medical, legal, just bad luck — puts you under real financial pressure this year. The number in the account is frightening.",
     outcomes: {
-      face(s) {
-        s.stats.agency = clamp(s.stats.agency + 8, 0, 100);
-        s.stats.mood   = clamp(s.stats.mood - 5, 0, 100);
-        return { text: "Asking for help is harder than you expected and more effective than you feared. The crisis resolves, slowly.", xp: { agency: 25 } };
-      },
-      ignore(s) {
-        s.stats.health   = clamp(s.stats.health - 5, 0, 100);
-        s.stats.mood     = clamp(s.stats.mood - 12, 0, 100);
-        s.threats.depression = clamp(s.threats.depression + 10, 0, 100);
-        return { text: "The problem compounds. Financial stress has a way of colonizing everything else.", xp: {} };
-      }
+      good:    { text: "You face it directly, ask for help where needed, and find a path through. The crisis resolves. You emerge with a clearer sense of what you can handle.", stat(s) { s.stats.agency = clamp(s.stats.agency + 10, 0, 100); s.stats.confidence = clamp(s.stats.confidence + 5, 0, 100); }, xp: { agency: 25 } },
+      neutral: { text: "You manage. Barely, at times. The year is tighter than you would like. By December, things have stabilized if not improved.", stat(s) { s.stats.mood = clamp(s.stats.mood - 5, 0, 100); }, xp: {} },
+      bad:     { text: "The financial stress colonizes everything. By the end of the year the problem has compounded and the mood has suffered accordingly.", stat(s) { s.stats.health = clamp(s.stats.health - 6, 0, 100); s.stats.mood = clamp(s.stats.mood - 12, 0, 100); s.threats.depression = clamp(s.threats.depression + 12, 0, 100); }, xp: {} }
     }
   },
   {
     id: 'creative_breakthrough',
     title: 'Something clicks',
-    condition: s => s.stats.selfAwareness > 50,
+    condition: s => s.stats.selfAwareness > 45,
     weight: 2,
-    text: "In the middle of an ordinary afternoon, something connects that you have been circling for years. It is not dramatic. It is very quiet. And it changes the way you see things.",
-    choices: [
-      { label: 'Follow it', key: 'follow' },
-      { label: 'File it away for later', key: 'file' }
-    ],
+    text: "In the middle of this year, something connects that you have been circling for a long time — about who you are, what you want, or what you are capable of.",
     outcomes: {
-      follow(s) {
-        s.stats.selfAwareness = clamp(s.stats.selfAwareness + 10, 0, 100);
-        s.stats.mood = clamp(s.stats.mood + 12, 0, 100);
-        s.stats.agency = clamp(s.stats.agency + 6, 0, 100);
-        return { text: "You spend three hours in a kind of focused trance. Whatever you make, it is yours.", xp: { selfAwareness: 30, agency: 20 } };
-      },
-      file(s) {
-        s.stats.mood = clamp(s.stats.mood + 3, 0, 100);
-        return { text: "You save the thought. It may still be there when you come back for it.", xp: {} };
-      }
+      good:    { text: "You follow it. Weeks of focused, genuine work. Whatever you make or decide, it is yours in a way that changes what comes after.", stat(s) { s.stats.selfAwareness = clamp(s.stats.selfAwareness + 12, 0, 100); s.stats.mood = clamp(s.stats.mood + 14, 0, 100); s.stats.agency = clamp(s.stats.agency + 8, 0, 100); }, xp: { selfAwareness: 30, agency: 20 } },
+      neutral: { text: "You get a few hours of it. The insight is real even if the follow-through is incomplete. You file it for later.", stat(s) { s.stats.selfAwareness = clamp(s.stats.selfAwareness + 5, 0, 100); s.stats.mood = clamp(s.stats.mood + 4, 0, 100); }, xp: { selfAwareness: 10 } },
+      bad:     { text: "The insight arrives but the energy to act on it does not. You watch the moment pass. The frustration is its own kind of information.", stat(s) { s.stats.mood = clamp(s.stats.mood - 5, 0, 100); }, xp: {} }
     }
   },
   {
     id: 'burnout',
     title: 'Running on empty',
-    condition: s => s.stats.energy < 20 && s.flags.hasJob,
-    weight: 6,
-    text: "You have been running at this pace for too long. The tiredness has moved past physical and into something harder to name.",
-    choices: [
-      { label: 'Force yourself to stop', key: 'stop' },
-      { label: 'Push through', key: 'push' }
-    ],
+    condition: s => s.flags.hasJob && s.stats.mood < 45,
+    weight: 5,
+    text: "The pace of recent years catches up with you. The tiredness has moved past physical into something harder to name — a flatness, an inability to care about things you used to care about.",
     outcomes: {
-      stop(s) {
-        s.stats.mood   = clamp(s.stats.mood + 10, 0, 100);
-        s.stats.health = clamp(s.stats.health + 5, 0, 100);
-        s.flags.therapyStreak = 0;
-        return { text: "You take a week. It is harder than working. By the end, you feel like yourself again.", xp: { selfAwareness: 20 } };
-      },
-      push(s) {
-        s.stats.health = clamp(s.stats.health - 8, 0, 100);
-        s.stats.mood   = clamp(s.stats.mood - 10, 0, 100);
-        s.threats.depression = clamp(s.threats.depression + 12, 0, 100);
-        return { text: "You push through. The body accommodates, until it doesn't.", xp: {} };
-      }
+      good:    { text: "You stop. Actually stop. Take time that feels irresponsible and turns out to be necessary. By the end of the year, you feel like a person again.", stat(s) { s.stats.mood = clamp(s.stats.mood + 15, 0, 100); s.stats.health = clamp(s.stats.health + 8, 0, 100); s.threats.depression = clamp(s.threats.depression - 10, 0, 100); }, xp: { selfAwareness: 20 } },
+      neutral: { text: "You slow down, partially. The recovery is incomplete but real. You end the year better than you started it.", stat(s) { s.stats.mood = clamp(s.stats.mood + 6, 0, 100); }, xp: {} },
+      bad:     { text: "You push through. The body accommodates, until it doesn't. The year ends with you more depleted than when it began.", stat(s) { s.stats.health = clamp(s.stats.health - 10, 0, 100); s.stats.mood = clamp(s.stats.mood - 8, 0, 100); s.threats.depression = clamp(s.threats.depression + 14, 0, 100); }, xp: {} }
     }
   },
   {
-    id: 'existential_night',
-    title: 'Three in the morning',
+    id: 'existential_year',
+    title: 'A year of questions',
     condition: s => true,
     weight: 2,
-    text: "You cannot sleep. The questions that feel manageable in daylight are enormous and patient at three in the morning: what you are doing, whether it matters, whether you are becoming the person you intended to be.",
-    choices: [
-      { label: 'Sit with the questions', key: 'sit' },
-      { label: 'Reach for distraction', key: 'distract' }
-    ],
+    text: "This year has an existential quality to it. The big questions — who you are, whether you are doing the right things, whether any of it amounts to anything — are louder than usual.",
     outcomes: {
-      sit(s) {
-        s.stats.selfAwareness = clamp(s.stats.selfAwareness + 8, 0, 100);
-        s.stats.mood = clamp(s.stats.mood - 3, 0, 100);
-        return { text: "You do not answer them. But you get a little more familiar with their shape. That is something.", xp: { selfAwareness: 25 } };
-      },
-      distract(s) {
-        s.stats.mood = clamp(s.stats.mood - 6, 0, 100);
-        return { text: "Two hours of scrolling. You know you are avoiding something. The something will still be there.", xp: {} };
-      }
+      good:    { text: "You sit with the questions long enough to get comfortable with them. They stop feeling like attacks. Something settles.", stat(s) { s.stats.selfAwareness = clamp(s.stats.selfAwareness + 10, 0, 100); s.stats.mood = clamp(s.stats.mood + 5, 0, 100); s.stats.agency = clamp(s.stats.agency + 5, 0, 100); }, xp: { selfAwareness: 25 } },
+      neutral: { text: "You do not answer the questions, but you get more familiar with their shape. That is something, even if it does not feel like enough.", stat(s) { s.stats.selfAwareness = clamp(s.stats.selfAwareness + 5, 0, 100); }, xp: { selfAwareness: 10 } },
+      bad:     { text: "The questions become noise. The year passes in a low-grade anxiety that never quite resolves. You emerge uncertain and a little more worn.", stat(s) { s.stats.mood = clamp(s.stats.mood - 8, 0, 100); s.threats.depression = clamp(s.threats.depression + 10, 0, 100); }, xp: {} }
     }
   },
   {
     id: 'reconciliation',
-    title: 'An old door',
-    condition: s => s.stats.social > 30 && s.age > 25,
+    title: 'A door reopens',
+    condition: s => s.stats.social > 25 && s.age > 24,
     weight: 2,
-    text: "Someone from your past reaches out — a family member, an old friend, a burned bridge. The message is short. The subtext is enormous.",
-    choices: [
-      { label: 'Respond', key: 'respond' },
-      { label: 'Leave it unread', key: 'ignore' }
-    ],
+    text: "Someone from your past reaches back out this year — a family member, an old friend, a burned bridge. The message is short. The subtext is enormous.",
     outcomes: {
-      respond(s, roll) {
-        if (roll > 40) {
-          s.stats.mood = clamp(s.stats.mood + 10, 0, 100);
-          s.threats.loneliness = clamp(s.threats.loneliness - 12, 0, 100);
-          return { text: "It goes better than you expected. Some things, it turns out, can be put back.", xp: { emotionalIntelligence: 20 } };
-        }
-        s.stats.mood = clamp(s.stats.mood - 5, 0, 100);
-        return { text: "It does not go well. But you tried. That matters, even when it does not help.", xp: {} };
-      },
-      ignore(s) {
-        s.stats.mood = clamp(s.stats.mood - 3, 0, 100);
-        return { text: "You close the message. The door stays shut. You are not sure yet if that is the right call.", xp: {} };
-      }
+      good:    { text: "You respond, and it goes better than you expected. Something is repaired that you had stopped believing could be. The relief is quiet and real.", stat(s) { s.stats.mood = clamp(s.stats.mood + 12, 0, 100); s.threats.loneliness = clamp(s.threats.loneliness - 14, 0, 100); s.stats.social = clamp(s.stats.social + 8, 0, 100); }, xp: { emotionalIntelligence: 20 } },
+      neutral: { text: "Contact is re-established, cautiously. You are polite with each other. Whether it becomes something more remains to be seen.", stat(s) { s.stats.mood = clamp(s.stats.mood + 3, 0, 100); }, xp: {} },
+      bad:     { text: "You try. It does not go well. The distance was there for reasons, and the reasons have not changed. You close the door again, this time deliberately.", stat(s) { s.stats.mood = clamp(s.stats.mood - 6, 0, 100); s.threats.loneliness = clamp(s.threats.loneliness + 5, 0, 100); }, xp: {} }
     }
   },
   {
-    id: 'unexpected_kindness',
-    title: 'Someone surprises you',
-    condition: s => true,
-    weight: 3,
-    text: "Someone does something kind — not grand, just unexpectedly generous. A stranger, a colleague, someone you barely know. It lands differently than you expected.",
-    choices: [
-      { label: 'Let it in', key: 'let_in' },
-      { label: 'Deflect, feel awkward', key: 'deflect' }
-    ],
+    id: 'unexpected_windfall',
+    title: 'Unexpected good fortune',
+    condition: s => s.year > 2,
+    weight: 2,
+    text: "Something fortunate happens this year that you did not engineer — a chance encounter, an unexpected opportunity, a piece of good luck that lands in your hands unasked.",
     outcomes: {
-      let_in(s) {
-        s.stats.mood = clamp(s.stats.mood + 10, 0, 100);
-        s.threats.loneliness = clamp(s.threats.loneliness - 8, 0, 100);
-        return { text: "You thank them. Something loosens slightly in your chest. You forget it by evening, but it was real.", xp: { emotionalIntelligence: 15 } };
-      },
-      deflect(s) {
-        s.stats.mood = clamp(s.stats.mood + 3, 0, 100);
-        return { text: "You wave it off. The kindness bounces back slightly. You carry a small regret you cannot name.", xp: {} };
-      }
+      good:    { text: "You recognize it for what it is and act on it. The year ends better than it had any right to, and you are grateful in a way that does not take long to become resolve.", stat(s) { s.stats.mood = clamp(s.stats.mood + 12, 0, 100); s.stats.confidence = clamp(s.stats.confidence + 8, 0, 100); s.stats.agency = clamp(s.stats.agency + 6, 0, 100); }, xp: { agency: 20, confidence: 20 } },
+      neutral: { text: "The good fortune is real but modest. You take what is offered and move forward. It is a lighter year than most.", stat(s) { s.stats.mood = clamp(s.stats.mood + 6, 0, 100); }, xp: {} },
+      bad:     { text: "The opportunity slips through circumstances outside your control. You watch it go. The loss is smaller than it feels.", stat(s) { s.stats.mood = clamp(s.stats.mood - 4, 0, 100); }, xp: {} }
     }
   },
   {
-    id: 'relationship_strain',
-    title: 'Something shifts',
+    id: 'relationship_change',
+    title: 'A relationship shifts',
     condition: s => s.flags.inRelationship,
     weight: 5,
-    text: "There has been distance lately — not dramatic, just a gradual cooling. You are both aware of it. Neither of you has said anything.",
-    choices: [
-      { label: 'Start the conversation', key: 'talk' },
-      { label: 'Hope it resolves on its own', key: 'wait' }
-    ],
+    text: "The relationship that has been part of your life reaches a turning point this year. Things cannot stay as they have been. The question is what they become.",
     outcomes: {
-      talk(s, roll) {
-        if (roll > 40) {
-          s.stats.mood = clamp(s.stats.mood + 8, 0, 100);
-          s.threats.loneliness = clamp(s.threats.loneliness - 10, 0, 100);
-          return { text: "The conversation is necessary and real. You come out of it closer than before.", xp: { emotionalIntelligence: 25 } };
-        }
-        s.flags.inRelationship = false;
-        s.threats.loneliness = clamp(s.threats.loneliness + 15, 0, 100);
-        s.stats.mood = clamp(s.stats.mood - 12, 0, 100);
-        return { text: "The conversation surfaces something too large to paper over. It ends. Honestly, if not kindly.", xp: {} };
-      },
-      wait(s) {
-        s.stats.mood = clamp(s.stats.mood - 5, 0, 100);
-        s.threats.depression = clamp(s.threats.depression + 5, 0, 100);
-        return { text: "It does not resolve. The distance grows. Silence has a grammar you both learn too late.", xp: {} };
-      }
+      good:    { text: "You move through the transition together and come out closer. The relationship deepens in a way that feels earned.", stat(s) { s.stats.mood = clamp(s.stats.mood + 10, 0, 100); s.threats.loneliness = clamp(s.threats.loneliness - 12, 0, 100); }, xp: { emotionalIntelligence: 25 } },
+      neutral: { text: "Things change shape but hold. It is a quieter version of what it was. You both adjust.", stat(s) { s.stats.mood = clamp(s.stats.mood - 2, 0, 100); }, xp: {} },
+      bad:     { text: "It ends. The ending is honest, if not kind. You spend months in the afterwards. Eventually, the afterwards becomes just your life.", stat(s) { s.flags.inRelationship = false; s.stats.mood = clamp(s.stats.mood - 14, 0, 100); s.threats.loneliness = clamp(s.threats.loneliness + 18, 0, 100); s.threats.depression = clamp(s.threats.depression + 8, 0, 100); }, xp: {} }
+    }
+  },
+  {
+    id: 'depression_crisis',
+    title: 'The floor drops',
+    condition: s => s.threats.depression > 50,
+    weight: 7,
+    text: "This year the depression is not background noise. It is the whole room. There are months where functioning is the entire ambition, and months where even that fails.",
+    outcomes: {
+      good:    { text: "You reach out. Someone helps. The floor comes back up, slowly. By the end of the year, you have a language for what happened and people who know about it.", stat(s) { s.threats.depression = clamp(s.threats.depression - 20, 0, 100); s.stats.selfAwareness = clamp(s.stats.selfAwareness + 10, 0, 100); s.stats.emotionalIntelligence = clamp(s.stats.emotionalIntelligence + 8, 0, 100); }, xp: { emotionalIntelligence: 35, selfAwareness: 25 } },
+      neutral: { text: "You survive the year. The floor stays low but does not disappear entirely. You keep moving. It costs everything you have, and you keep moving anyway.", stat(s) { s.stats.mood = clamp(s.stats.mood - 5, 0, 100); s.threats.loneliness = clamp(s.threats.loneliness + 6, 0, 100); }, xp: {} },
+      bad:     { text: "The year is one of the worst. You get through it alone, by fractions. The darkness recedes eventually, but it leaves marks.", stat(s) { s.stats.mood = clamp(s.stats.mood - 12, 0, 100); s.threats.loneliness = clamp(s.threats.loneliness + 15, 0, 100); s.stats.health = clamp(s.stats.health - 6, 0, 100); }, xp: {} }
     }
   },
   {
     id: 'small_victory',
-    title: 'Something you worked for',
-    condition: s => s.stats.agency > 45,
+    title: 'Something you worked for pays off',
+    condition: s => s.stats.agency > 40,
     weight: 3,
-    text: "Something you put effort into actually comes together — not a miracle, just competence meeting opportunity. People notice.",
-    choices: [
-      { label: 'Own it', key: 'own' },
-      { label: 'Deflect the credit', key: 'deflect' }
-    ],
+    text: "Effort and opportunity coincide this year in a way that produces something visible. People take notice. You have to decide how to hold it.",
     outcomes: {
-      own(s) {
-        s.stats.confidence = clamp(s.stats.confidence + 10, 0, 100);
-        s.stats.mood = clamp(s.stats.mood + 8, 0, 100);
-        return { text: "You accept the recognition without apologizing for it. It sits comfortably. You let it.", xp: { confidence: 30, agency: 20 } };
-      },
-      deflect(s) {
-        s.stats.mood = clamp(s.stats.mood + 3, 0, 100);
-        return { text: "You attribute it to luck, circumstance, other people. The win is real even if you will not fully claim it.", xp: {} };
-      }
-    }
-  },
-  {
-    id: 'depression_moment',
-    title: 'The floor drops',
-    condition: s => s.threats.depression > 50,
-    weight: 7,
-    text: "It is not one thing. It is never one thing. But something today makes the accumulated weight suddenly visible — all of it, at once.",
-    choices: [
-      { label: 'Tell someone', key: 'tell' },
-      { label: 'Get through it alone', key: 'alone' }
-    ],
-    outcomes: {
-      tell(s) {
-        s.threats.depression = clamp(s.threats.depression - 15, 0, 100);
-        s.stats.emotionalIntelligence = clamp(s.stats.emotionalIntelligence + 8, 0, 100);
-        return { text: "Saying it out loud makes it smaller and real at the same time. Someone knows now. That matters.", xp: { emotionalIntelligence: 30, selfAwareness: 20 } };
-      },
-      alone(s) {
-        s.stats.mood = clamp(s.stats.mood - 10, 0, 100);
-        s.threats.loneliness = clamp(s.threats.loneliness + 8, 0, 100);
-        return { text: "You get through it. The floor comes back up. You add it to the list of things you have survived alone.", xp: {} };
-      }
+      good:    { text: "You accept the recognition without apologizing for it. The win is real and you let it be real. It changes what you believe yourself capable of.", stat(s) { s.stats.confidence = clamp(s.stats.confidence + 14, 0, 100); s.stats.mood = clamp(s.stats.mood + 10, 0, 100); s.stats.agency = clamp(s.stats.agency + 6, 0, 100); }, xp: { confidence: 30, agency: 25 } },
+      neutral: { text: "The achievement lands quietly. You are satisfied in a private way. The year moves on.", stat(s) { s.stats.confidence = clamp(s.stats.confidence + 5, 0, 100); s.stats.mood = clamp(s.stats.mood + 5, 0, 100); }, xp: { confidence: 10 } },
+      bad:     { text: "The success is undercut — by circumstance, politics, or your own inability to receive it. The win exists but does not feel like one.", stat(s) { s.stats.mood = clamp(s.stats.mood - 3, 0, 100); }, xp: {} }
     }
   }
 ];
 
-function maybeFireEvent() {
-  const s = STATE;
-  // Check threshold events first
-  const threshold = EVENTS.find(e =>
-    e.weight >= 7 &&
-    e.condition(s) &&
-    !s.flags[`event_done_${e.id}`]
-  );
-  if (threshold && s.threats.substanceAbuse > 60 && threshold.id === 'substance_intervention') {
-    queueEvent(threshold);
-    return;
-  }
-  if (threshold && s.threats.depression > 50 && threshold.id === 'depression_moment') {
-    s.flags.daysSinceEvent = 0;
-    queueEvent(threshold);
-    return;
-  }
-
-  s.flags.daysSinceEvent = (s.flags.daysSinceEvent || 0) + 1;
-  const minDays = 5, maxDays = 10;
-  if (s.flags.daysSinceEvent < minDays) return;
-  if (s.flags.daysSinceEvent < maxDays && Math.random() > 0.4) return;
-
-  const eligible = EVENTS.filter(e => e.condition(s) && !s.flags[`event_done_${e.id}`]);
-  if (!eligible.length) return;
-
-  const totalWeight = eligible.reduce((sum, e) => sum + e.weight, 0);
+// Fire exactly one event per year
+function selectYearEvent() {
+  const eligible = EVENTS.filter(e => e.condition(STATE));
+  if (!eligible.length) return null;
+  const totalWeight = eligible.reduce((s, e) => s + e.weight, 0);
   let r = Math.random() * totalWeight;
   for (const e of eligible) {
     r -= e.weight;
-    if (r <= 0) { queueEvent(e); return; }
+    if (r <= 0) return e;
   }
-}
-
-function queueEvent(ev) {
-  STATE.flags.pendingEvent = ev;
-  STATE.flags.daysSinceEvent = 0;
+  return eligible[eligible.length - 1];
 }
 
 // ════════════════════════════════════════════════
-//  APPLY ACTIONS + ADVANCE DAY
+//  APPLY ACTIONS + ADVANCE YEAR
 // ════════════════════════════════════════════════
 function applyActions(actionIds) {
   let allXP = {};
-  const leveled = [];
   let usedSubstance = false;
-  let usedExercise = false;
-  let usedSleep = false;
-  let usedAllNighter = false;
+  let usedExercise  = false;
+  let usedTherapy   = false;
 
   for (const id of actionIds) {
     const action = ALL_ACTIONS.find(a => a.id === id);
     if (!action) continue;
     action.effect(STATE);
     for (const [k, v] of Object.entries(action.xp)) allXP[k] = (allXP[k] || 0) + v;
-    if (id === 'substances') usedSubstance = true;
-    if (id === 'exercise') usedExercise = true;
-    if (id === 'sleep_well') usedSleep = true;
-    if (id === 'all_nighter') usedAllNighter = true;
+    if (id === 'drink_use')        usedSubstance = true;
+    if (id === 'prioritize_health') usedExercise = true;
+    if (id === 'inner_work')       usedTherapy  = true;
   }
 
-  // Reset streaks if not done
-  if (!usedSubstance && STATE.flags.substanceStreak) STATE.flags.substanceStreak = 0;
-  if (!usedExercise) STATE.flags.exerciseStreak = 0;
+  if (!usedSubstance) STATE.flags.substanceStreak = 0;
+  if (!usedExercise)  STATE.flags.exerciseStreak  = 0;
+  if (!usedTherapy)   STATE.flags.therapyStreak   = 0;
 
-  // Award XP and check tier-ups
-  const newLevels = awardXP(allXP);
-  leveled.push(...newLevels);
-
-  return leveled;
+  return awardXP(allXP);
 }
 
 function advanceCalendar() {
-  STATE.day++;
-  STATE.age = 18 + (STATE.day - 1) / 365;
-  // Reset energy each morning
-  const energyMax = computeEnergyMax();
-  STATE.stats.energy = energyMax;
-  STATE.flags.actionsChosenToday = [];
+  STATE.year++;
+  STATE.age = 18 + (STATE.year - 1);
+  STATE.flags.actionsChosenThisYear = [];
 }
 
 // ════════════════════════════════════════════════
@@ -1359,46 +1040,43 @@ function render() {
 }
 
 function renderTopBar() {
-  document.getElementById('tb-name').textContent = STATE.name;
-  document.getElementById('tb-age').textContent  = STATE.age.toFixed(1);
-  document.getElementById('tb-day').textContent  = STATE.day;
+  document.getElementById('tb-name').textContent  = STATE.name;
+  document.getElementById('tb-age').textContent   = Math.floor(STATE.age);
+  document.getElementById('tb-year').textContent  = STATE.year;
   document.getElementById('tb-phase').textContent = STATE.phase;
 }
 
 function renderStats() {
   const s = STATE.stats;
   const vitals = [
-    { key: 'health', label: 'Health', cls: 'bar-health' },
-    { key: 'mood',   label: 'Mood',   cls: 'bar-mood' },
-    { key: 'energy', label: 'Energy', cls: 'bar-energy' },
-    { key: 'sleep',  label: 'Sleep',  cls: 'bar-sleep' },
-    { key: 'social', label: 'Social', cls: 'bar-social' },
-    { key: 'nutrition', label: 'Nutrition', cls: 'bar-nutr' }
+    { key: 'health',  label: 'Health',    cls: 'bar-health' },
+    { key: 'mood',    label: 'Mood',      cls: 'bar-mood'   },
+    { key: 'social',  label: 'Social',    cls: 'bar-social' },
+    { key: 'nutrition',label: 'Nutrition',cls: 'bar-nutr'   }
   ];
   const skills = [
     { key: 'agency',               label: 'Agency',           cls: 'bar-agency' },
-    { key: 'emotionalIntelligence',label: 'Emotional Intel.', cls: 'bar-eq' },
-    { key: 'selfAwareness',        label: 'Self-Awareness',   cls: 'bar-self' },
-    { key: 'confidence',           label: 'Confidence',       cls: 'bar-conf' }
+    { key: 'emotionalIntelligence',label: 'Emotional Intel.', cls: 'bar-eq'     },
+    { key: 'selfAwareness',        label: 'Self-Awareness',   cls: 'bar-self'   },
+    { key: 'confidence',           label: 'Confidence',       cls: 'bar-conf'   }
   ];
 
   document.getElementById('vitals-bars').innerHTML = vitals.map(v => barRow(v.label, s[v.key], v.cls)).join('');
   document.getElementById('skills-bars').innerHTML = skills.map(v => {
     const tier = STATE.skillTiers[v.key] || 0;
-    const tierBadge = tier > 0 ? `<span class="tier-badge">T${tier}</span>` : '';
-    return barRow(v.label + tierBadge, s[v.key], v.cls, true);
+    const badge = tier > 0 ? `<span class="tier-badge">T${tier}</span>` : '';
+    return barRow(v.label + badge, s[v.key], v.cls, true);
   }).join('');
 
   const t = STATE.threats;
   document.getElementById('threat-bars').innerHTML = [
-    { key: 'depression', label: 'Depression' },
+    { key: 'depression',     label: 'Depression'     },
     { key: 'substanceAbuse', label: 'Substance Abuse' },
-    { key: 'loneliness', label: 'Loneliness' }
+    { key: 'loneliness',     label: 'Loneliness'     }
   ].map(th => {
     const val = t[th.key];
-    const hi = val > 70;
-    return `<div class="stat-row threat-row ${hi ? 'high' : ''}">
-      <div class="stat-label">${th.label}<span>${val}</span></div>
+    return `<div class="stat-row threat-row ${val > 70 ? 'high' : ''}">
+      <div class="stat-label">${escHtml(th.label)}<span>${val}</span></div>
       <div class="bar-track"><div class="bar-fill bar-threat" style="width:${val}%"></div></div>
     </div>`;
   }).join('');
@@ -1413,7 +1091,7 @@ function barRow(label, value, cls, raw = false) {
 }
 
 function escHtml(s) {
-  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 }
 
 function renderLog() {
@@ -1421,29 +1099,22 @@ function renderLog() {
   const entries = STATE.log.slice(-50).reverse();
   el.innerHTML = entries.map(e => `
     <div class="log-entry type-${e.type}">
-      <div class="log-meta">Day ${e.day} · Age ${e.age.toFixed(1)}</div>
+      <div class="log-meta">Age ${Math.floor(e.age)}</div>
       <div class="log-text">${escHtml(e.text)}</div>
     </div>`).join('');
 }
 
 function renderActions() {
   const available = buildAvailableActions();
-  const chosen = STATE.flags.actionsChosenToday;
-  const energyLeft = STATE.stats.energy;
-  const energyMax = computeEnergyMax();
-
-  document.getElementById('energy-bar-fill').style.width = `${(energyLeft / energyMax) * 100}%`;
-  document.getElementById('energy-label').textContent = `${energyLeft} / ${energyMax}`;
+  const chosen    = STATE.flags.actionsChosenThisYear;
 
   const grid = document.getElementById('actions-grid');
   grid.innerHTML = available.map(a => {
-    const isChosen = chosen.includes(a.id);
-    const canAfford = a.cost === 0 || energyLeft >= a.cost;
+    const isChosen  = chosen.includes(a.id);
     const maxChosen = chosen.length >= 2 && !isChosen;
-    const disabled = (!canAfford || maxChosen) ? 'disabled' : '';
-    return `<button class="action-btn ${isChosen ? 'selected' : ''}" ${disabled}
+    return `<button class="action-btn ${isChosen ? 'selected' : ''}" ${maxChosen ? 'disabled' : ''}
       data-id="${a.id}" title="${escHtml(a.desc)}">
-      ${escHtml(a.label)}<span class="cost-tag">${a.cost > 0 ? a.cost + 'e' : ''}</span>
+      ${escHtml(a.label)}
     </button>`;
   }).join('');
 
@@ -1451,51 +1122,43 @@ function renderActions() {
     btn.addEventListener('click', () => toggleAction(btn.dataset.id));
   });
 
+  const n = chosen.length;
   document.getElementById('selections-info').textContent =
-    chosen.length === 0 ? 'Choose up to 2 actions, then advance the day.' :
-    chosen.length === 1 ? '1 action chosen. Choose one more or proceed.' :
-    '2 actions chosen.';
+    n === 0 ? 'No priorities chosen yet.' :
+    n === 1 ? '1 priority chosen.' :
+    '2 priorities chosen.';
 
-  document.getElementById('next-day-btn').disabled = false;
+  document.getElementById('next-year-btn').disabled = false;
 }
 
 function toggleAction(id) {
-  const chosen = STATE.flags.actionsChosenToday;
+  const chosen = STATE.flags.actionsChosenThisYear;
   const idx = chosen.indexOf(id);
-  if (idx >= 0) {
-    chosen.splice(idx, 1);
-  } else {
-    if (chosen.length >= 2) return;
-    const action = ALL_ACTIONS.find(a => a.id === id);
-    if (!action) return;
-    if (action.cost > 0 && STATE.stats.energy < action.cost) return;
-    chosen.push(id);
-    // Deduct energy immediately for UI feedback
-    if (action.cost > 0) STATE.stats.energy = clamp(STATE.stats.energy - action.cost, 0, 100);
-  }
+  if (idx >= 0) chosen.splice(idx, 1);
+  else if (chosen.length < 2) chosen.push(id);
   renderActions();
 }
 
 // ════════════════════════════════════════════════
-//  NEXT DAY
+//  NEXT YEAR
 // ════════════════════════════════════════════════
-document.getElementById('next-day-btn').addEventListener('click', () => {
+document.getElementById('next-year-btn').addEventListener('click', () => {
   if (STATE.phase !== 'playing') return;
-  endOfDay();
+  endOfYear();
 });
 
-function endOfDay() {
-  const chosen = STATE.flags.actionsChosenToday;
+function endOfYear() {
+  const chosen = STATE.flags.actionsChosenThisYear;
 
-  // Apply chosen actions
+  // Apply chosen priorities
   const leveled = applyActions(chosen);
 
-  // Log the day's narrative
-  const narr = generateDayNarrative();
+  // Year narrative
+  const narr = generateYearNarrative();
   appendLog(narr, 'normal');
 
   // Passive effects
-  computeDailyPassiveEffects();
+  computeYearlyPassiveEffects();
 
   // Check death
   const death = checkDeathConditions();
@@ -1507,45 +1170,33 @@ function endOfDay() {
     return;
   }
 
-  // Level-ups
+  // Pick this year's event
+  const ev = selectYearEvent();
+
+  // Level-ups first, then event
   if (leveled.length > 0) {
     showLevelUpModal(leveled, () => {
       advanceCalendar();
       render();
-      maybeFireEvent();
-      if (STATE.flags.pendingEvent) {
-        const ev = STATE.flags.pendingEvent;
-        STATE.flags.pendingEvent = null;
-        showEventModal(ev);
-      }
+      if (ev) showEventModal(ev);
     });
     return;
   }
 
   advanceCalendar();
   render();
-
-  maybeFireEvent();
-  if (STATE.flags.pendingEvent) {
-    const ev = STATE.flags.pendingEvent;
-    STATE.flags.pendingEvent = null;
-    showEventModal(ev);
-  }
+  if (ev) showEventModal(ev);
 }
 
 // ════════════════════════════════════════════════
 //  MODALS
 // ════════════════════════════════════════════════
 function showModal(titleHtml, bodyHtml, choicesHtml, titleClass = '') {
-  const overlay = document.getElementById('modal-overlay');
-  const title   = document.getElementById('modal-title');
-  const body    = document.getElementById('modal-body');
-  const choices = document.getElementById('modal-choices');
-  title.innerHTML = titleHtml;
-  title.className = titleClass;
-  body.innerHTML  = bodyHtml;
-  choices.innerHTML = choicesHtml;
-  overlay.classList.remove('hidden');
+  document.getElementById('modal-title').innerHTML = titleHtml;
+  document.getElementById('modal-title').className = titleClass;
+  document.getElementById('modal-body').innerHTML   = bodyHtml;
+  document.getElementById('modal-choices').innerHTML = choicesHtml;
+  document.getElementById('modal-overlay').classList.remove('hidden');
 }
 
 function hideModal() {
@@ -1553,41 +1204,45 @@ function hideModal() {
 }
 
 function showEventModal(ev) {
-  STATE.flags[`event_done_${ev.id}`] = true;
   STATE.phase = 'event';
-  const choicesHtml = ev.choices.map(c =>
-    `<button class="modal-choice-btn" data-key="${c.key}">${escHtml(c.label)}</button>`
-  ).join('');
-  showModal(escHtml(ev.title), escHtml(ev.text), `<div id="modal-choices">${choicesHtml}</div>`, '');
-  document.querySelectorAll('.modal-choice-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const key = btn.dataset.key;
-      const diceMod = ((STATE.stats.emotionalIntelligence + STATE.stats.selfAwareness) / 10) * 1.5;
-      const roll = clamp(rand(1, 100) + diceMod, 1, 100);
-      const outcomesFn = ev.outcomes[key];
-      const result = outcomesFn(STATE, roll);
-      STATE.flags[`event_done_${ev.id}`] = true;
-      appendLog(`[Event: ${ev.title}] ${result.text}`, 'event');
-      if (result.xp) awardXP(result.xp);
-      STATE.phase = 'playing';
+  showModal(
+    escHtml(ev.title),
+    escHtml(ev.text),
+    ev.outcomes ? `<div id="modal-choices">
+      <button class="modal-choice-btn" id="ev-resolve">See what happens</button>
+    </div>` : '',
+    ''
+  );
+  document.getElementById('ev-resolve').addEventListener('click', () => {
+    const outcome = rollOutcome();
+    const o = ev.outcomes[outcome];
+    if (o.stat) o.stat(STATE);
+    if (o.xp)   awardXP(o.xp);
+    appendLog(`[${ev.title}] ${o.text}`, outcome); // type = 'good' | 'neutral' | 'bad'
+
+    const tagClass = outcome;
+    const tagLabel = outcome.charAt(0).toUpperCase() + outcome.slice(1);
+    const titleClass = outcome === 'good' ? 'modal-title-green' : outcome === 'bad' ? '' : 'modal-title-blue';
+    const btnClass   = outcome === 'good' ? 'blue' : outcome === 'bad' ? '' : 'blue';
+
+    showModal(
+      escHtml(ev.title),
+      `<span class="outcome-tag ${tagClass}">${tagLabel}</span><br>${escHtml(o.text)}`,
+      `<button class="modal-single-btn ${btnClass}" id="modal-continue">Continue</button>`,
+      titleClass
+    );
+    STATE.phase = 'playing';
+    render();
+    document.getElementById('modal-continue').addEventListener('click', () => {
+      hideModal();
       render();
-      showModal(
-        escHtml(ev.title),
-        escHtml(result.text),
-        `<button class="modal-single-btn blue" id="modal-continue">Continue</button>`,
-        'modal-title-blue'
-      );
-      document.getElementById('modal-continue').addEventListener('click', () => {
-        hideModal();
-        render();
-      });
     });
   });
 }
 
 function showLevelUpModal(leveled, callback) {
   const lines = leveled.map(l =>
-    `<strong>${SKILL_LABELS[l.skill] || l.skill}</strong> has reached Tier ${l.tier} — ${TIER_NAMES[l.tier]}.`
+    `<strong>${SKILL_LABELS[l.skill] || l.skill}</strong> → Tier ${l.tier}: ${TIER_NAMES[l.tier]}.`
   ).join('<br>');
   showModal(
     'Growth',
@@ -1602,28 +1257,26 @@ function showLevelUpModal(leveled, callback) {
 }
 
 function showDeathModal(death) {
-  const s = STATE;
   const epitaph = buildEpitaph(death.cause);
-  const exerciseDays = s.log.filter(e => e.text.includes('exercise') || e.text.includes('Exercise')).length;
-  const journalDays  = s.log.filter(e => e.text.includes('journal') || e.text.includes('reflect')).length;
-  const peakMood = 100 - Math.min(...s.log.map(() => 0), 0); // approximate
-
+  const goodYears = STATE.log.filter(e => e.type === 'good').length;
+  const badYears  = STATE.log.filter(e => e.type === 'bad').length;
   const summary = `
     <p style="color:#888;font-size:0.82rem;margin-bottom:1rem">LIFE SUMMARY</p>
     <p>${escHtml(death.text)}</p>
     <br>
-    <p style="color:#a8dadc;font-style:italic;margin-bottom:1rem">${escHtml(epitaph)}</p>
-    <p style="font-size:0.82rem;color:#888">
-      Days lived: ${s.day} &nbsp;·&nbsp;
-      Final age: ${s.age.toFixed(1)} &nbsp;·&nbsp;
-      Therapy sessions: ${s.flags.therapyStreak || 0} &nbsp;·&nbsp;
-      Peak health: ${s.stats.health}
+    <p style="color:#a8dadc;font-style:italic;margin-bottom:1.2rem">${escHtml(epitaph)}</p>
+    <p style="font-size:0.82rem;color:#888;line-height:1.8">
+      Years lived: ${STATE.year - 1} &nbsp;·&nbsp;
+      Final age: ${Math.floor(STATE.age)} &nbsp;·&nbsp;
+      Good outcomes: ${goodYears} &nbsp;·&nbsp;
+      Hard outcomes: ${badYears}<br>
+      Peak health: ${STATE.stats.health} &nbsp;·&nbsp;
+      Final mood: ${STATE.stats.mood}
     </p>`;
-
   showModal(
     death.cause === 'age' ? 'A life fully lived' : 'The end',
     summary,
-    `<button class="modal-single-btn" id="modal-restart">Play Again</button>`,
+    `<button class="modal-single-btn ${death.cause === 'age' ? 'blue' : ''}" id="modal-restart">Play Again</button>`,
     death.cause === 'age' ? 'modal-title-blue' : ''
   );
   document.getElementById('modal-restart').addEventListener('click', () => {
@@ -1644,17 +1297,13 @@ document.getElementById('name-input').addEventListener('keydown', e => {
 
 function startGame() {
   const name = document.getElementById('name-input').value.trim();
-  if (!name) {
-    document.getElementById('name-error').textContent = 'Please enter a name.';
-    return;
-  }
+  if (!name) { document.getElementById('name-error').textContent = 'Please enter a name.'; return; }
   document.getElementById('name-error').textContent = '';
   document.getElementById('intro-screen').classList.add('hidden');
   initNewGame(name);
 }
 
-// prevent Next Day before game starts
-document.getElementById('next-day-btn').disabled = true;
+document.getElementById('next-year-btn').disabled = true;
 </script>
 </body>
 </html>
