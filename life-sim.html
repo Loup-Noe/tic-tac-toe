@@ -813,21 +813,42 @@ function computeTier(xp) {
 // ════════════════════════════════════════════════
 //  PASSIVE EFFECTS  (yearly scale)
 // ════════════════════════════════════════════════
-function computeYearlyPassiveEffects() {
+function computeYearlyPassiveEffects(chosenActions) {
   const s = STATE;
-  if (s.threats.loneliness > 55) s.threats.depression = clamp(s.threats.depression + 6, 0, 100);
-  if (s.threats.substanceAbuse > 30) s.stats.health = clamp(s.stats.health - Math.floor(s.threats.substanceAbuse / 15), 0, 100);
-  if (s.threats.depression > 50) s.stats.mood = clamp(s.stats.mood - 8, 0, 100);
-  s.stats.mood = clamp(s.stats.mood + (s.stats.mood < 50 ? 3 : -3), 0, 100);
-  s.stats.nutrition = clamp(s.stats.nutrition - 15, 0, 100);
-  if (s.stats.nutrition < 20) s.stats.health = clamp(s.stats.health - 3, 0, 100);
-  else if (s.stats.nutrition > 65) s.stats.health = clamp(s.stats.health + 2, 0, 100);
-  if (s.flags.therapyStreak > 2) s.threats.depression = clamp(s.threats.depression - 4, 0, 100);
-  if (s.skillTiers.emotionalIntelligence >= 2) s.threats.loneliness = clamp(s.threats.loneliness - 5, 0, 100);
-  const moodFloor = s.skillTiers.confidence >= 1 ? 15 : 0;
+  const chose = id => chosenActions.includes(id);
+
+  // Baseline decay — every year
+  s.threats.loneliness  = clamp(s.threats.loneliness + 5, 0, 100);
+  s.stats.confidence    = clamp(s.stats.confidence - 3, 0, 100);
+  s.stats.nutrition     = clamp(s.stats.nutrition - 25, 0, 100);
+
+  // Conditional decay — if you didn't invest
+  if (!chose('invest_relationships') && !chose('deep_bonds') && !chose('pursue_passion'))
+    s.stats.social = clamp(s.stats.social - 6, 0, 100);
+  if (!chose('work_hard') && !chose('take_risk') && !chose('seek_wisdom'))
+    s.stats.agency = clamp(s.stats.agency - 4, 0, 100);
+
+  // Age-based health decay (starts at 30, not 50)
+  if (s.age > 30) s.stats.health = clamp(s.stats.health - Math.floor((s.age - 30) / 8), 0, 100);
+
+  // Threat cascades
+  if (s.threats.loneliness > 40)    s.threats.depression = clamp(s.threats.depression + 8, 0, 100);
+  if (s.threats.substanceAbuse > 15) s.stats.health = clamp(s.stats.health - Math.floor(s.threats.substanceAbuse / 8), 0, 100);
+  if (s.threats.depression > 40)    s.stats.mood = clamp(s.stats.mood - 12, 0, 100);
+  if (s.stats.nutrition < 20)       s.stats.health = clamp(s.stats.health - 5, 0, 100);
+
+  // Mood drift
+  if (s.stats.mood > 40) s.stats.mood = clamp(s.stats.mood - 6, 0, 100);
+  else                   s.stats.mood = clamp(s.stats.mood + 2, 0, 100);
+
+  // Streak effects
+  if (s.flags.substanceStreak > 2) s.threats.substanceAbuse = clamp(s.threats.substanceAbuse + 8, 0, 100);
+  if (s.flags.therapyStreak > 2)   s.threats.depression     = clamp(s.threats.depression - 6, 0, 100);
+
+  // Skill tier bonuses
+  if (s.skillTiers.emotionalIntelligence >= 2) s.threats.loneliness = clamp(s.threats.loneliness - 7, 0, 100);
+  const moodFloor = s.skillTiers.confidence >= 1 ? 12 : 0;
   if (s.stats.mood < moodFloor) s.stats.mood = moodFloor;
-  if (s.flags.substanceStreak > 3) s.threats.substanceAbuse = clamp(s.threats.substanceAbuse + 5, 0, 100);
-  if (s.age > 50) s.stats.health = clamp(s.stats.health - Math.floor((s.age - 50) / 15), 0, 100);
 }
 
 // ════════════════════════════════════════════════
@@ -1302,7 +1323,7 @@ function endOfYear() {
   const chosen    = STATE.flags.actionsChosenThisYear;
   const leveled   = applyActions(chosen);
   const narrative = generateYearNarrative();
-  computeYearlyPassiveEffects();
+  computeYearlyPassiveEffects(chosen);
 
   const death = checkDeathConditions();
   if (death) {
@@ -1364,7 +1385,7 @@ function showEventModal(ev, finalize) {
       const idx       = parseInt(btn.dataset.idx, 10);
       const choice    = ev.choices[idx];
       const outcome   = rollOutcome(choice.modifier);
-      const o         = ev.outcomes[outcome];
+      const o         = (ev.choices[idx].outcomes || ev.outcomes)[outcome];
       if (o.stat) o.stat(STATE);
       if (o.xp)   awardXP(o.xp);
 
