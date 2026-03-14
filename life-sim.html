@@ -793,9 +793,9 @@ function buildEpitaph(cause) {
 //    bad     : roll < 35
 //  Modifier: (EQ + selfAwareness) / 10 * 1.5  (max +15)
 // ════════════════════════════════════════════════
-function rollOutcome() {
-  const mod = ((STATE.stats.emotionalIntelligence + STATE.stats.selfAwareness) / 10) * 1.5;
-  const roll = clamp(rand(1, 100) + mod, 1, 115);
+function rollOutcome(choiceMod = 0) {
+  const statMod = ((STATE.stats.emotionalIntelligence + STATE.stats.selfAwareness) / 10) * 1.5;
+  const roll = clamp(rand(1, 100) + statMod + choiceMod, 1, 115);
   if (roll > 65) return 'good';
   if (roll >= 35) return 'neutral';
   return 'bad';
@@ -808,6 +808,10 @@ const EVENTS = [
     condition: s => s.year > 1,
     weight: 4,
     text: "Work throws up a fork in the road this year — a new opportunity, a difficult colleague, a moment that demands a choice about who you want to be professionally.",
+    choices: [
+      { label: 'Lean in — take the initiative and push for what you want', modifier: +12 },
+      { label: 'Let things play out without forcing anything', modifier: -10 }
+    ],
     outcomes: {
       good:    { text: "You navigate it well. The opportunity opens further than you expected, and you step through it with something like confidence.", stat(s) { s.stats.agency = clamp(s.stats.agency + 12, 0, 100); s.stats.confidence = clamp(s.stats.confidence + 8, 0, 100); }, xp: { agency: 30 } },
       neutral: { text: "It resolves without drama. You keep your footing, lose nothing important, and learn a little about how these things go.", stat(s) { s.stats.agency = clamp(s.stats.agency + 4, 0, 100); }, xp: {} },
@@ -820,6 +824,10 @@ const EVENTS = [
     condition: s => s.stats.social > 25,
     weight: 4,
     text: "Something shifts in one of your close friendships this year — distance, conflict, a failure to show up. The question of whether it survives hangs over several months.",
+    choices: [
+      { label: 'Reach out and address it directly, however uncomfortable', modifier: +12 },
+      { label: 'Give it space and hope it resolves on its own', modifier: -10 }
+    ],
     outcomes: {
       good:    { text: "The friendship makes it through and comes out stronger. You are both a little more honest with each other now.", stat(s) { s.stats.social = clamp(s.stats.social + 10, 0, 100); s.threats.loneliness = clamp(s.threats.loneliness - 10, 0, 100); }, xp: { emotionalIntelligence: 25 } },
       neutral: { text: "The friendship survives, in a smaller form. Something was lost; something remains. You make your peace with the ratio.", stat(s) { s.stats.mood = clamp(s.stats.mood - 3, 0, 100); }, xp: {} },
@@ -832,6 +840,10 @@ const EVENTS = [
     condition: s => s.stats.health < 60 || s.threats.substanceAbuse > 35,
     weight: 6,
     text: "Your body makes a demand this year — a diagnosis, a scare, a doctor who says the word 'concerning'. The gap between how you have been living and how you need to live is suddenly visible.",
+    choices: [
+      { label: 'Take it seriously — keep the appointments, make the changes', modifier: +15 },
+      { label: 'Manage the surface and defer the harder stuff', modifier: -12 }
+    ],
     outcomes: {
       good:    { text: "You take it seriously. The appointments are kept, the changes are made, and the body — slowly, grudgingly — responds.", stat(s) { s.stats.health = clamp(s.stats.health + 15, 0, 100); s.threats.substanceAbuse = clamp(s.threats.substanceAbuse - 12, 0, 100); }, xp: { selfAwareness: 20 } },
       neutral: { text: "You manage the immediate problem. The deeper patterns stay mostly in place. The body accepts the compromise, for now.", stat(s) { s.stats.health = clamp(s.stats.health + 5, 0, 100); }, xp: {} },
@@ -844,6 +856,10 @@ const EVENTS = [
     condition: s => s.stats.social > 35,
     weight: 3,
     text: "Someone enters your life this year with the quality of a question. It is too early to know what kind of question, but the asking has begun.",
+    choices: [
+      { label: 'Open up and be present with what is happening', modifier: +10 },
+      { label: 'Keep your distance — you are not sure you are ready', modifier: -10 }
+    ],
     outcomes: {
       good:    { text: "Something real takes root. You are careful with it, and the care is returned. By the end of the year, you are not alone in the way you were before.", stat(s) { s.flags.inRelationship = true; s.stats.mood = clamp(s.stats.mood + 15, 0, 100); s.threats.loneliness = clamp(s.threats.loneliness - 20, 0, 100); }, xp: { emotionalIntelligence: 20 } },
       neutral: { text: "It does not go anywhere lasting, but the months of it were good. You remember the feeling with more warmth than regret.", stat(s) { s.stats.mood = clamp(s.stats.mood + 4, 0, 100); s.threats.loneliness = clamp(s.threats.loneliness - 5, 0, 100); }, xp: {} },
@@ -856,6 +872,10 @@ const EVENTS = [
     condition: s => s.threats.substanceAbuse > 55,
     weight: 9,
     text: "A friend or family member pulls you aside this year. Their voice is careful. They are choosing every word. What they say is that they are scared for you.",
+    choices: [
+      { label: 'Hear them out — be honest about what has been happening', modifier: +15 },
+      { label: 'Reassure them and change the subject', modifier: -15 }
+    ],
     outcomes: {
       good:    { text: "You hear them. Fully. The conversation is one of the hardest of your life and one of the most important. Things begin to shift.", stat(s) { s.threats.substanceAbuse = clamp(s.threats.substanceAbuse - 25, 0, 100); s.threats.depression = clamp(s.threats.depression - 8, 0, 100); s.stats.emotionalIntelligence = clamp(s.stats.emotionalIntelligence + 10, 0, 100); }, xp: { emotionalIntelligence: 40, selfAwareness: 30 } },
       neutral: { text: "You hear some of it. You make some changes. The problem gets smaller without going away. It is a start, if not a resolution.", stat(s) { s.threats.substanceAbuse = clamp(s.threats.substanceAbuse - 10, 0, 100); }, xp: { selfAwareness: 15 } },
@@ -868,6 +888,10 @@ const EVENTS = [
     condition: s => s.age > 28,
     weight: 3,
     text: "Someone close to you dies this year. It is not a surprise — nothing ever fully is — but that does not make it smaller.",
+    choices: [
+      { label: 'Let yourself grieve — do not run from it', modifier: +12 },
+      { label: 'Stay busy and push through it', modifier: -12 }
+    ],
     outcomes: {
       good:    { text: "The grief is present and real, and you do not hide from it. Something in you deepens this year. You come out of it changed in ways that feel, eventually, like growth.", stat(s) { s.stats.selfAwareness = clamp(s.stats.selfAwareness + 12, 0, 100); s.stats.mood = clamp(s.stats.mood - 8, 0, 100); }, xp: { selfAwareness: 35 } },
       neutral: { text: "You get through the year. The grief sits alongside you in a quiet way. Life continues, differently weighted.", stat(s) { s.stats.mood = clamp(s.stats.mood - 5, 0, 100); s.threats.depression = clamp(s.threats.depression + 5, 0, 100); }, xp: {} },
@@ -880,6 +904,10 @@ const EVENTS = [
     condition: s => s.year > 3,
     weight: 3,
     text: "An unexpected expense — medical, legal, just bad luck — puts you under real financial pressure this year. The number in the account is frightening.",
+    choices: [
+      { label: 'Face it head-on — make calls, ask for help, make a plan', modifier: +12 },
+      { label: 'Ignore it and hope something changes', modifier: -12 }
+    ],
     outcomes: {
       good:    { text: "You face it directly, ask for help where needed, and find a path through. The crisis resolves. You emerge with a clearer sense of what you can handle.", stat(s) { s.stats.agency = clamp(s.stats.agency + 10, 0, 100); s.stats.confidence = clamp(s.stats.confidence + 5, 0, 100); }, xp: { agency: 25 } },
       neutral: { text: "You manage. Barely, at times. The year is tighter than you would like. By December, things have stabilized if not improved.", stat(s) { s.stats.mood = clamp(s.stats.mood - 5, 0, 100); }, xp: {} },
@@ -892,6 +920,10 @@ const EVENTS = [
     condition: s => s.stats.selfAwareness > 45,
     weight: 2,
     text: "In the middle of this year, something connects that you have been circling for a long time — about who you are, what you want, or what you are capable of.",
+    choices: [
+      { label: 'Drop everything and follow it wherever it leads', modifier: +12 },
+      { label: 'Make a note of it and return to your routine', modifier: -8 }
+    ],
     outcomes: {
       good:    { text: "You follow it. Weeks of focused, genuine work. Whatever you make or decide, it is yours in a way that changes what comes after.", stat(s) { s.stats.selfAwareness = clamp(s.stats.selfAwareness + 12, 0, 100); s.stats.mood = clamp(s.stats.mood + 14, 0, 100); s.stats.agency = clamp(s.stats.agency + 8, 0, 100); }, xp: { selfAwareness: 30, agency: 20 } },
       neutral: { text: "You get a few hours of it. The insight is real even if the follow-through is incomplete. You file it for later.", stat(s) { s.stats.selfAwareness = clamp(s.stats.selfAwareness + 5, 0, 100); s.stats.mood = clamp(s.stats.mood + 4, 0, 100); }, xp: { selfAwareness: 10 } },
@@ -904,6 +936,10 @@ const EVENTS = [
     condition: s => s.flags.hasJob && s.stats.mood < 45,
     weight: 5,
     text: "The pace of recent years catches up with you. The tiredness has moved past physical into something harder to name — a flatness, an inability to care about things you used to care about.",
+    choices: [
+      { label: 'Stop. Give yourself permission to actually rest', modifier: +14 },
+      { label: 'Push through — there is no time to stop', modifier: -14 }
+    ],
     outcomes: {
       good:    { text: "You stop. Actually stop. Take time that feels irresponsible and turns out to be necessary. By the end of the year, you feel like a person again.", stat(s) { s.stats.mood = clamp(s.stats.mood + 15, 0, 100); s.stats.health = clamp(s.stats.health + 8, 0, 100); s.threats.depression = clamp(s.threats.depression - 10, 0, 100); }, xp: { selfAwareness: 20 } },
       neutral: { text: "You slow down, partially. The recovery is incomplete but real. You end the year better than you started it.", stat(s) { s.stats.mood = clamp(s.stats.mood + 6, 0, 100); }, xp: {} },
@@ -916,6 +952,10 @@ const EVENTS = [
     condition: s => true,
     weight: 2,
     text: "This year has an existential quality to it. The big questions — who you are, whether you are doing the right things, whether any of it amounts to anything — are louder than usual.",
+    choices: [
+      { label: 'Sit with the questions and stay open to what they reveal', modifier: +10 },
+      { label: 'Reach for distraction and keep moving', modifier: -10 }
+    ],
     outcomes: {
       good:    { text: "You sit with the questions long enough to get comfortable with them. They stop feeling like attacks. Something settles.", stat(s) { s.stats.selfAwareness = clamp(s.stats.selfAwareness + 10, 0, 100); s.stats.mood = clamp(s.stats.mood + 5, 0, 100); s.stats.agency = clamp(s.stats.agency + 5, 0, 100); }, xp: { selfAwareness: 25 } },
       neutral: { text: "You do not answer the questions, but you get more familiar with their shape. That is something, even if it does not feel like enough.", stat(s) { s.stats.selfAwareness = clamp(s.stats.selfAwareness + 5, 0, 100); }, xp: { selfAwareness: 10 } },
@@ -928,6 +968,10 @@ const EVENTS = [
     condition: s => s.stats.social > 25 && s.age > 24,
     weight: 2,
     text: "Someone from your past reaches back out this year — a family member, an old friend, a burned bridge. The message is short. The subtext is enormous.",
+    choices: [
+      { label: 'Respond honestly — see where it goes', modifier: +10 },
+      { label: 'Leave it — some doors are closed for reasons', modifier: -8 }
+    ],
     outcomes: {
       good:    { text: "You respond, and it goes better than you expected. Something is repaired that you had stopped believing could be. The relief is quiet and real.", stat(s) { s.stats.mood = clamp(s.stats.mood + 12, 0, 100); s.threats.loneliness = clamp(s.threats.loneliness - 14, 0, 100); s.stats.social = clamp(s.stats.social + 8, 0, 100); }, xp: { emotionalIntelligence: 20 } },
       neutral: { text: "Contact is re-established, cautiously. You are polite with each other. Whether it becomes something more remains to be seen.", stat(s) { s.stats.mood = clamp(s.stats.mood + 3, 0, 100); }, xp: {} },
@@ -940,6 +984,10 @@ const EVENTS = [
     condition: s => s.year > 2,
     weight: 2,
     text: "Something fortunate happens this year that you did not engineer — a chance encounter, an unexpected opportunity, a piece of good luck that lands in your hands unasked.",
+    choices: [
+      { label: 'Recognize it and act on it while it is here', modifier: +12 },
+      { label: 'Hold back — you are not sure it is right for you', modifier: -10 }
+    ],
     outcomes: {
       good:    { text: "You recognize it for what it is and act on it. The year ends better than it had any right to, and you are grateful in a way that does not take long to become resolve.", stat(s) { s.stats.mood = clamp(s.stats.mood + 12, 0, 100); s.stats.confidence = clamp(s.stats.confidence + 8, 0, 100); s.stats.agency = clamp(s.stats.agency + 6, 0, 100); }, xp: { agency: 20, confidence: 20 } },
       neutral: { text: "The good fortune is real but modest. You take what is offered and move forward. It is a lighter year than most.", stat(s) { s.stats.mood = clamp(s.stats.mood + 6, 0, 100); }, xp: {} },
@@ -952,6 +1000,10 @@ const EVENTS = [
     condition: s => s.flags.inRelationship,
     weight: 5,
     text: "The relationship that has been part of your life reaches a turning point this year. Things cannot stay as they have been. The question is what they become.",
+    choices: [
+      { label: 'Name what is happening and face it together', modifier: +12 },
+      { label: 'Stay quiet and hope the distance closes by itself', modifier: -12 }
+    ],
     outcomes: {
       good:    { text: "You move through the transition together and come out closer. The relationship deepens in a way that feels earned.", stat(s) { s.stats.mood = clamp(s.stats.mood + 10, 0, 100); s.threats.loneliness = clamp(s.threats.loneliness - 12, 0, 100); }, xp: { emotionalIntelligence: 25 } },
       neutral: { text: "Things change shape but hold. It is a quieter version of what it was. You both adjust.", stat(s) { s.stats.mood = clamp(s.stats.mood - 2, 0, 100); }, xp: {} },
@@ -964,6 +1016,10 @@ const EVENTS = [
     condition: s => s.threats.depression > 50,
     weight: 7,
     text: "This year the depression is not background noise. It is the whole room. There are months where functioning is the entire ambition, and months where even that fails.",
+    choices: [
+      { label: 'Tell someone — do not carry this alone', modifier: +14 },
+      { label: 'Get through it alone, as you always have', modifier: -12 }
+    ],
     outcomes: {
       good:    { text: "You reach out. Someone helps. The floor comes back up, slowly. By the end of the year, you have a language for what happened and people who know about it.", stat(s) { s.threats.depression = clamp(s.threats.depression - 20, 0, 100); s.stats.selfAwareness = clamp(s.stats.selfAwareness + 10, 0, 100); s.stats.emotionalIntelligence = clamp(s.stats.emotionalIntelligence + 8, 0, 100); }, xp: { emotionalIntelligence: 35, selfAwareness: 25 } },
       neutral: { text: "You survive the year. The floor stays low but does not disappear entirely. You keep moving. It costs everything you have, and you keep moving anyway.", stat(s) { s.stats.mood = clamp(s.stats.mood - 5, 0, 100); s.threats.loneliness = clamp(s.threats.loneliness + 6, 0, 100); }, xp: {} },
@@ -976,6 +1032,10 @@ const EVENTS = [
     condition: s => s.stats.agency > 40,
     weight: 3,
     text: "Effort and opportunity coincide this year in a way that produces something visible. People take notice. You have to decide how to hold it.",
+    choices: [
+      { label: 'Own it — accept the recognition fully and without apology', modifier: +12 },
+      { label: 'Deflect the credit and stay in the background', modifier: -10 }
+    ],
     outcomes: {
       good:    { text: "You accept the recognition without apologizing for it. The win is real and you let it be real. It changes what you believe yourself capable of.", stat(s) { s.stats.confidence = clamp(s.stats.confidence + 14, 0, 100); s.stats.mood = clamp(s.stats.mood + 10, 0, 100); s.stats.agency = clamp(s.stats.agency + 6, 0, 100); }, xp: { confidence: 30, agency: 25 } },
       neutral: { text: "The achievement lands quietly. You are satisfied in a private way. The year moves on.", stat(s) { s.stats.confidence = clamp(s.stats.confidence + 5, 0, 100); s.stats.mood = clamp(s.stats.mood + 5, 0, 100); }, xp: { confidence: 10 } },
@@ -1205,37 +1265,45 @@ function hideModal() {
 
 function showEventModal(ev) {
   STATE.phase = 'event';
-  showModal(
-    escHtml(ev.title),
-    escHtml(ev.text),
-    ev.outcomes ? `<div id="modal-choices">
-      <button class="modal-choice-btn" id="ev-resolve">See what happens</button>
-    </div>` : '',
-    ''
-  );
-  document.getElementById('ev-resolve').addEventListener('click', () => {
-    const outcome = rollOutcome();
-    const o = ev.outcomes[outcome];
-    if (o.stat) o.stat(STATE);
-    if (o.xp)   awardXP(o.xp);
-    appendLog(`[${ev.title}] ${o.text}`, outcome); // type = 'good' | 'neutral' | 'bad'
 
-    const tagClass = outcome;
-    const tagLabel = outcome.charAt(0).toUpperCase() + outcome.slice(1);
-    const titleClass = outcome === 'good' ? 'modal-title-green' : outcome === 'bad' ? '' : 'modal-title-blue';
-    const btnClass   = outcome === 'good' ? 'blue' : outcome === 'bad' ? '' : 'blue';
+  // Step 1: show event description + player choices
+  const choicesHtml = (ev.choices || []).map((c, i) =>
+    `<button class="modal-choice-btn" data-idx="${i}">${escHtml(c.label)}</button>`
+  ).join('');
 
-    showModal(
-      escHtml(ev.title),
-      `<span class="outcome-tag ${tagClass}">${tagLabel}</span><br>${escHtml(o.text)}`,
-      `<button class="modal-single-btn ${btnClass}" id="modal-continue">Continue</button>`,
-      titleClass
-    );
-    STATE.phase = 'playing';
-    render();
-    document.getElementById('modal-continue').addEventListener('click', () => {
-      hideModal();
+  showModal(escHtml(ev.title), escHtml(ev.text), choicesHtml, '');
+
+  document.querySelectorAll('.modal-choice-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const choiceIdx = parseInt(btn.dataset.idx, 10);
+      const choiceMod = ev.choices[choiceIdx].modifier;
+      const choiceLabel = ev.choices[choiceIdx].label;
+
+      // Step 2: roll outcome with choice modifier applied
+      const outcome = rollOutcome(choiceMod);
+      const o = ev.outcomes[outcome];
+      if (o.stat) o.stat(STATE);
+      if (o.xp)   awardXP(o.xp);
+      appendLog(`[${ev.title}] You chose: "${choiceLabel}". ${o.text}`, outcome);
+
+      const tagLabel   = outcome.charAt(0).toUpperCase() + outcome.slice(1);
+      const titleClass = outcome === 'good' ? 'modal-title-green' : outcome === 'neutral' ? 'modal-title-blue' : '';
+      const btnClass   = outcome === 'good' ? 'blue' : outcome === 'neutral' ? 'blue' : '';
+
+      showModal(
+        escHtml(ev.title),
+        `<span class="outcome-tag ${outcome}">${tagLabel}</span>
+         <p style="font-size:0.8rem;color:#888;margin-bottom:0.8rem;font-style:italic">"${escHtml(choiceLabel)}"</p>
+         ${escHtml(o.text)}`,
+        `<button class="modal-single-btn ${btnClass}" id="modal-continue">Continue</button>`,
+        titleClass
+      );
+      STATE.phase = 'playing';
       render();
+      document.getElementById('modal-continue').addEventListener('click', () => {
+        hideModal();
+        render();
+      });
     });
   });
 }
